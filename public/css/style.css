@@ -1,0 +1,55 @@
+:root {
+    --legible-width: 65ch;
+    --legible-margin: 4rem
+}
+
+/* Main content */
+
+main {
+    margin-bottom: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: calc(100vw - var(--legible-margin));
+    padding: 0;
+    position: relative;
+    width: var(--legible-width);
+}
+
+/* Element */
+
+.element {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 1rem 0;
+    padding: 1.25rem;
+    border-radius: calc(var(--radius)*2);
+    background-color: var(--element-background);
+}
+
+.el-title {
+    margin-top: 0;
+    font-weight: 600;
+    letter-spacing: -.03em;
+}
+
+.el-content {
+    line-height: 1;
+    font-weight: 400;
+    color: #16c;
+    transition: opacity .3s ease;
+}
+
+/* Footer */
+
+footer {
+    background-color: var(--element-background);
+    padding: var(--legible-margin) 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer span {
+    color: var(--text-optional);
+    text-align: center;
+    display: block;
+}
