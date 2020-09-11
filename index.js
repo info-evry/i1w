@@ -9,6 +9,14 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/views/home.html'));
 });
 
+app.get('/cours-profs', (req, res) => {
+  res.sendFile(path.join(__dirname+'/views/cours-profs.html'));
+});
+
+app.get('/outils', (req, res) => {
+  res.sendFile(path.join(__dirname+'/views/outils.html'));
+});
+
 app.get('/contact', (req, res) => {
   res.sendFile(path.join(__dirname+'/views/contact.html'));
 });
