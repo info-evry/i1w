@@ -1,13 +1,17 @@
-const express = require('express');
+const compression = require( 'compression' );
+const express = require( 'express' );
 const app = express();
 const port = 3000;
+
+
 
 // EJS
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
 // Static
-app.use(express.static('public'));
+app.use( compression( { level: 1 } ) );
+app.use( express.static( 'public' ) );
 
 // Routes
 app.get('/', (req, res) => {
