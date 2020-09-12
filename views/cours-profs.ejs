@@ -1,58 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr-FR">
+<%- include('includes/head') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info Evry</title>
-    <meta name="description" content="Site internet des etudiants du département informatique d'Evry">
-    <link rel="stylesheet" href="css/standard.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/favicons/cropped-infoueve-logo-3-32x32.png" sizes="32x32">
-    <link rel="icon" href="img/favicons/cropped-infoueve-logo-3-192x192.png" sizes="192x192">
-    <link rel="apple-touch-icon" href="img/favicons/cropped-infoueve-logo-3-180x180.png">
-    <meta name="msapplication-TileImage" content="img/favicons/cropped-infoueve-logo-3-270x270.png">
-</head>
-
-<body class="home color-scheme-auto singular header-adaptative header-auto-hide color-scheme-dark">
-    <header id="site-header">
-        <a class="skip-link focusable screen-reader-text button" href="#post-content" tabindex="0">Skip to content</a>
-        <div id="site-branding"><strong id="site-title" class="site-title screen-reader-text h1">Info Evry</strong>
-            <div id="site-logo">
-                <div class="light-scheme-logo">
-                    <a href="/" class="custom-logo-link" title="Info Evry • Home" rel="home">
-                        <img src="img/infoevry-h-lsc.png.webp" alt="Info Evry Logo for Light Scheme" height="40"
-                            loading="lazy">
-                    </a>
-                </div>
-                <div class="dark-scheme-logo">
-                    <a href="/" class="custom-logo-link" title="Info Evry • Home" rel="home">
-                        <img src="img/infoevry-h-dsc.png.webp" alt="Info Evry Logo for Dark Scheme" height="40"
-                            loading="lazy">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <ul id="header-menu" class="header-menu">
-            <li class="menu-item"><a href="/" aria-current="page">Accueil</a></li>
-            <li class="menu-item menu-item-has-children">
-                <a href="/cours-profs">Cours &amp; Profs</a>
-                <ul class="sub-menu">
-                    <li class="menu-item"><a href="/outils">Outils</a></li>
-                </ul>
-            </li>
-            <li class="menu-item"><a href="/contact">Contact</a></li>
-        </ul>
-        <button id="navigation-toggle" title="Menu" data-target="navigation-wrapper" class="no-style toggle">
-            <span class="top-bar"></span> <span class="middle-bar"></span> <span class="bottom-bar"></span>
-        </button>
-        <button id="search-toggle" title="Search" class="no-style toggle" data-target="search-wrapper">
-            <span class="search-icon"></span>
-        </button>
-    </header>
+<body class="color-scheme-auto singular header-adaptative header-auto-hide color-scheme-dark">
+    <%- include('includes/header') %>
 
     <main id="site-content">
-        <div id="main-content" style="margin-top:0;">
+        <div id="main-content">
             <article class="entry">
                 <header class="post-header">
                     <div class="post-info">
@@ -469,61 +421,4 @@
         </div>
     </main>
 
-    <aside id="site-aside">
-        <nav id="navigation-wrapper" class="wrapper">
-            <div class="header-block no-overlay-menu">
-                <ul id="overlay-header-menu" class="overlay-header-menu menu">
-                    <li class="menu-item"><a href="/" aria-current="page">Accueil</a></li>
-                    <li class="menu-item menu-item-has-children">
-                        <a href="/cours-profs">Cours &amp; Profs</a>
-                        <div class="toggle">
-                            <div class="toggle-element"></div>
-                        </div>
-                        <ul class="sub-menu">
-                            <li class="menu-item"><a href="/outils">Outils</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item"><a href="/contact">Contact</a></li>
-                </ul>
-            </div>
-            <div id="header-settings" class="header-block">
-                <form class="settings-set" id="color-scheme-selector">
-                    <div class="color-scheme-option">
-                        <input type="radio" id="light-scheme-option" class="color-scheme-input"
-                            name="color-scheme-option">
-                        <label for="light-scheme-option" class="color-scheme-label">Light</label>
-                    </div>
-                    <div class="color-scheme-option">
-                        <input type="radio" id="dark-scheme-option" class="color-scheme-input"
-                            name="color-scheme-option">
-                        <label for="dark-scheme-option" class="color-scheme-label">Dark</label>
-                    </div>
-                    <div class="color-scheme-option">
-                        <input type="radio" id="auto-scheme-option" class="color-scheme-input"
-                            name="color-scheme-option" checked="">
-                        <label for="auto-scheme-option" class="color-scheme-label">Auto</label>
-                    </div>
-                </form>
-            </div>
-        </nav>
-        <div id="search-wrapper" class="wrapper">
-            <form role="search" method="get" class="search-form" action="https://info-evry.fr/">
-                <div id="search-container">
-                    <label class="screen-reader-text" for="search-input-1">Search for …</label>
-                    <input type="search" id="search-input-1" class="search-input" placeholder="Search for …" value=""
-                        name="s" title="Search for …" required="">
-                    <button type="submit" class="search-submit no-style" title="Search">
-                        <span class="search-icon"></span>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </aside>
-
-    <footer id="site-footer"> <span id="site-credit">© 2020 Info Evry. All Rights Reserved.</span></footer>
-
-    <script defer src="js/script.js"></script>
-    <script defer src="js/aemi.js"></script>
-</body>
-
-</html>
+    <%- include('includes/footer') %>

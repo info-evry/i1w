@@ -3,7 +3,7 @@ Info Evry Website - NodeJS Edition
 
 ### Mise en place d'un environnement de travail en local (à l'attention des <s>noobs</s> débutants).
 
-Informations : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
+Information : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
 
 
 #### Installation de node.js 
@@ -48,12 +48,14 @@ Informations : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
     `npm install`
 
 #### Utilisation
-    
-    * Lancement de nodejs
+
+* Lancement de nodejs
 
     `npm start`
 
-    Il suffit maintenant de lancer le navigateur sur le port 3000 de la machine locale (choix de port arbitraire...) : [http://localhost:3000/](http://localhost:3000/)
+    Il suffit maintenant de lancer le navigateur sur le port 3000 de la machine locale (choix de port arbitraire...) :
+    
+    [http://localhost:3000/](http://localhost:3000/)
 
 
 #### Liens utiles : 
