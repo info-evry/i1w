@@ -3,8 +3,10 @@ const app = express();
 const path = require('path');
 const port = 3000;
 
+// Static
 app.use(express.static('public'));
 
+// Routes
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/home.html'));
 });
@@ -21,15 +23,16 @@ app.get('/contact', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/contact.html'));
 });
 
-// Error page not found
-app.use(function(req, res, next){
-  res.status(404);
+// Search
+app.get('/search/:query?', (req, res) => {
+  const query = req.params.query;
+  res.json({search: query});
+});
 
-  res.format({
-    html: function () {
-      res.sendFile(path.join(__dirname + '/views/404.html'));
-    }
-  });
+// Error page not found
+app.use((req, res, next) => {
+  res.status(404);
+  res.sendFile(path.join(__dirname + '/views/404.html'));
 });
 
 app.listen(port, () => {
