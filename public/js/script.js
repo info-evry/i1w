@@ -1,10 +1,13 @@
 'use strict';
+
 function is(object) {
 	return object !== null && object !== undefined;
 }
+
 function isset(object) {
 	return is(object) && object !== '';
 }
+
 function getGlobal() {
 	const value = globalThis || self || window || global;
 	if (value) {
@@ -12,6 +15,7 @@ function getGlobal() {
 	}
 	throw new Error('Unable to get global object.');
 }
+
 function entries(object, func) {
 	for (let key in object) {
 		if (object.hasOwnProperty(key)) {
@@ -19,21 +23,27 @@ function entries(object, func) {
 		}
 	}
 }
+
 function isNumber(variable) {
 	return typeof variable === 'number' || variable instanceof Number;
 }
+
 function isString(variable) {
 	return typeof variable === 'string' || variable instanceof String;
 }
+
 function isBoolean(variable) {
 	return typeof variable === 'boolean';
 }
+
 function isFunction(object) {
 	return typeof object === 'function' || object instanceof Function ? object : false;
 }
+
 function isObject(object) {
 	return typeof object === 'object' || object instanceof Object;
 }
+
 function isURL(object) {
 	if (isString(object)) {
 		try {
@@ -45,6 +55,7 @@ function isURL(object) {
 		return object instanceof URL;
 	}
 }
+
 function identifier(length) {
 	'use script';
 	const values = [];
@@ -63,10 +74,12 @@ function identifier(length) {
 	}
 	return String.fromCharCode(...list);
 }
+
 function inhibitEvent(event) {
 	event.preventDefault();
 	event.stopPropagation();
 }
+
 function catchError(caughtError, customMessage) {
 	if (typeof caughtError === 'string') {
 		caughtError = new Error(caughtError);
@@ -80,12 +93,15 @@ function catchError(caughtError, customMessage) {
 	});
 	return false;
 }
+
 function byId(string) {
 	return document.getElementById(string);
 }
-function byClass(string,element) {
+
+function byClass(string, element) {
 	return (element || document).getElementsByClassName(string);
 }
+
 function requestFrame() {
 	const [func, ...args] = arguments;
 	if (isFunction(func)) {
@@ -93,6 +109,7 @@ function requestFrame() {
 	}
 	throw new Error(`${func} is not a function.`);
 }
+
 function cancelFrame(id) {
 	try {
 		cancelAnimationFrame(id);
@@ -102,6 +119,7 @@ function cancelFrame(id) {
 		return false;
 	}
 }
+
 function hasClass(element, className) {
 	if (is(element) && isset(className)) {
 		return element.classList.contains(className);
@@ -109,6 +127,7 @@ function hasClass(element, className) {
 		return catchError(`element:${element} or class:${className} is undefined.`);
 	}
 }
+
 function addClass(element, className, doNotRequestFrame) {
 	doNotRequestFrame = doNotRequestFrame || true;
 	if (is(element) && isset(className)) {
@@ -121,6 +140,7 @@ function addClass(element, className, doNotRequestFrame) {
 	}
 	return catchError(`element:${element} or class:${classname} is undefined.`);
 }
+
 function removeClass(element, className, doNotRequestFrame) {
 	doNotRequestFrame = doNotRequestFrame || true;
 	if (is(element) && isset(className)) {
@@ -133,6 +153,7 @@ function removeClass(element, className, doNotRequestFrame) {
 	}
 	return catchError(`element:${element} or class:${className} is undefined.`);
 }
+
 function toggleClass(element, className) {
 	if (is(element) && isset(className)) {
 		const boolean = hasClass(element, className);
@@ -289,6 +310,7 @@ function smoothScrollTo(selector, duration) {
 	duration = duration || 1000;
 	let distance = targetPosition - startPosition;
 	let startTime = null;
+
 	function animation(currentTime) {
 		startTime = is(startTime) ? startTime : currentTime;
 		let timeElapsed = currentTime - startTime;
@@ -323,7 +345,18 @@ function ecs() {
 	if (e instanceof Element) {
 		return ac(ce(), e);
 	}
-	const { attr: a, class: c, data, events, id, ns, style, actions, _, $ } = e;
+	const {
+		attr: a,
+		class: c,
+		data,
+		events,
+		id,
+		ns,
+		style,
+		actions,
+		_,
+		$
+	} = e;
 	if (id || c || $) {
 		if (ns) {
 			e = document.createElementNS(ns, $);
@@ -384,6 +417,7 @@ function ecs() {
 	}
 	return e;
 }
+
 function ecsScript() {
 	const c = document.currentScript;
 	if (![document.head, document.documentElement].includes(c.parentElement)) {
@@ -405,7 +439,7 @@ class Wait {
 		const [func, timeout, ...args] = arguments;
 		return setTimeout(func, timeout || 0, ...args);
 	}
-	static async async() {
+	static async async () {
 		const [func, ...args] = arguments;
 		return func(...args);
 	}
@@ -471,8 +505,7 @@ class Environment {
 	async parallel(array) {
 		try {
 			return Promise.all(array);
-		}
-		catch (_) {
+		} catch (_) {
 			return array;
 		}
 		return;
@@ -491,7 +524,7 @@ class Environment {
 			return is(this.get(key));
 		}
 		return false;
-	} 
+	}
 	push() {
 		for (const func of arguments) {
 			if (isFunction(func)) {
@@ -514,20 +547,23 @@ class Cookies {
 	static get(string) {
 		return new Map(
 			decodeURIComponent(document.cookie)
-				.split(/;/)
-				.map(string => string.trim().split(/=/))
+			.split(/;/)
+			.map(string => string.trim().split(/=/))
 		).get(string);
 	}
 	static has(string) {
 		return new Map(
 			decodeURIComponent(document.cookie)
-				.split(/;/)
-				.map(string => string.trim().split(/=/))
+			.split(/;/)
+			.map(string => string.trim().split(/=/))
 		).has(string);
 	}
 	static set(cookieName, cookieValue, options) {
 		options = is(options) && isObject(options) ? options : {};
-		let { expiration, sameSite } = options;
+		let {
+			expiration,
+			sameSite
+		} = options;
 		if (!is(expiration)) {
 			const newDate = new Date();
 			const year = 365.244 * 24 * 3600 * 1000;
@@ -576,7 +612,10 @@ class PromiseWorker {
 	}
 	static postMessage(data, worker) {
 		const messageId = PromiseWorker.id();
-		const message = { id: messageId, data: data };
+		const message = {
+			id: messageId,
+			data: data
+		};
 		return new Promise((resolve, reject) => {
 			PromiseWorker.resolves[messageId] = resolve;
 			PromiseWorker.rejects[messageId] = reject;
@@ -584,7 +623,11 @@ class PromiseWorker {
 		});
 	}
 	static onMessage(message) {
-		const { id, err, data } = message.data;
+		const {
+			id,
+			err,
+			data
+		} = message.data;
 		const resolve = PromiseWorker.resolves[id];
 		const reject = PromiseWorker.rejects[id];
 		if (is(data)) {

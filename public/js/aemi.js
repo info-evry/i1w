@@ -12,7 +12,7 @@ function addNoOpener(link) {
 	if (link instanceof HTMLAnchorElement) {
 		const relAttr = attr(link, 'rel') || '';
 		if (!relAttr.includes('noopener')) {
-			attr( link, 'rel', isset(relAttr) ? `${relAttr} noopener` : 'noopener' );
+			attr(link, 'rel', isset(relAttr) ? `${relAttr} noopener` : 'noopener');
 		}
 	}
 }
@@ -38,8 +38,12 @@ aemi.parallel([
 ]);
 
 function isOnFirstHeader(element) {
-	const { bottom } = aemi.get('first-header').getClientRects()[0];
-	const { top } = element.getClientRects()[0];
+	const {
+		bottom
+	} = aemi.get('first-header').getClientRects()[0];
+	const {
+		top
+	} = element.getClientRects()[0];
 	return bottom > top;
 }
 
@@ -48,7 +52,7 @@ function isWrapperToggled() {
 }
 
 function schemeCoherenceCondition() {
-	return hasClass(document.body,'color-scheme-light') && hasClass(document.body, 'has-post-thumbnail');
+	return hasClass(document.body, 'color-scheme-light') && hasClass(document.body, 'has-post-thumbnail');
 }
 
 function changeHeaderScheme() {
@@ -57,14 +61,13 @@ function changeHeaderScheme() {
 	const isBar = aemi.assert('pro-bar');
 	if (schemeCoherenceCondition()) {
 		if (!isWrapperToggled()) {
-			isOnFirstHeader(header) ? ColorScheme.toDarkScheme( header ) : ColorScheme.toLightScheme( header );
+			isOnFirstHeader(header) ? ColorScheme.toDarkScheme(header) : ColorScheme.toLightScheme(header);
 			if (isBar) {
-				isOnFirstHeader(bar) ? ColorScheme.toDarkScheme( bar ) : ColorScheme.toLightScheme( bar );
+				isOnFirstHeader(bar) ? ColorScheme.toDarkScheme(bar) : ColorScheme.toLightScheme(bar);
 			}
-		}
-		else {
-			ColorScheme.toLightScheme( header );
-			isBar && ColorScheme.toLightScheme( bar );
+		} else {
+			ColorScheme.toLightScheme(header);
+			isBar && ColorScheme.toLightScheme(bar);
 		}
 	}
 }
@@ -72,7 +75,7 @@ function changeHeaderScheme() {
 
 
 class ColorScheme {
-	constructor () {
+	constructor() {
 		this.scheme = ColorScheme.init();
 	}
 
@@ -99,20 +102,17 @@ class ColorScheme {
 	}
 
 	static getClassState() {
-		if (hasClass(document.body, 'color-scheme-light'))
-		{
+		if (hasClass(document.body, 'color-scheme-light')) {
 			return 'light';
 		}
-		if (hasClass(document.body, 'color-scheme-dark'))
-		{
+		if (hasClass(document.body, 'color-scheme-dark')) {
 			return 'dark';
 		}
 		return null;
 	}
 
 	static getUserState() {
-		if (aemi instanceof Environment)
-		{
+		if (aemi instanceof Environment) {
 			return aemi.assert('csh-sel');
 		}
 		return is(byId('color-scheme-selector'));
@@ -124,12 +124,10 @@ class ColorScheme {
 	}
 
 	static getBrowerState() {
-		try
-		{
+		try {
 			const matchMedia = window.matchMedia('(prefers-color-scheme: light');
 			return matchMedia.matches !== 'not all' ? (matchMedia.matches ? 'light' : 'dark') : null;
-		} catch (error)
-		{
+		} catch (error) {
 			catchError(error);
 			return null;
 		}
@@ -142,34 +140,24 @@ class ColorScheme {
 		const cookieState = ColorScheme.getCookiesState();
 		const browserState = ColorScheme.getBrowerState();
 
-		if (isset(classState))
-		{
-			if (userState)
-			{
-				if (isset(cookieState))
-				{
+		if (isset(classState)) {
+			if (userState) {
+				if (isset(cookieState)) {
 					return cookieState;
 				}
-			}
-			else
-			{
+			} else {
 				ColorScheme.deleteCookie();
 			}
 			return classState;
 		}
-		if (userState)
-		{
-			if (isset(cookieState))
-			{
+		if (userState) {
+			if (isset(cookieState)) {
 				return cookieState;
 			}
-		}
-		else
-		{
+		} else {
 			ColorScheme.deleteCookie();
 		}
-		if (isset(browserState))
-		{
+		if (isset(browserState)) {
 			return browserState;
 		}
 		return 'light';
@@ -182,14 +170,14 @@ class ColorScheme {
 	}
 
 	static toLightScheme(element) {
-		if (hasClass(element,'color-scheme-dark')) {
+		if (hasClass(element, 'color-scheme-dark')) {
 			removeClass(element, 'color-scheme-dark');
 			addClass(element, 'color-scheme-light');
 		}
 	}
 
 	static toDarkScheme(element) {
-		if (hasClass(element,'color-scheme-light')) {
+		if (hasClass(element, 'color-scheme-light')) {
 			removeClass(element, 'color-scheme-light');
 			addClass(element, 'color-scheme-dark');
 		}
@@ -219,8 +207,7 @@ class ColorScheme {
 				throw new Error(`scheme is not defined.`);
 			}
 		}
-		if ('colorScheme' in env)
-		{
+		if ('colorScheme' in env) {
 			env.colorScheme.scheme = scheme;
 		}
 		if (cookie) {
@@ -232,21 +219,19 @@ class ColorScheme {
 	static init() {
 		const support = isset(ColorScheme.getBrowerState());
 		const matchMedia = window.matchMedia(`(prefers-color-scheme: light)`);
-		if ( support && 'addEventListener' in matchMedia)
-		{
+		if (support && 'addEventListener' in matchMedia) {
 			matchMedia.addEventListener('change', (event) => {
 				const autoState = ColorScheme.getAutoState();
 				const classState = ColorScheme.getClassState();
 				const userState = ColorScheme.getUserState();
 				const cookieState = ColorScheme.getCookiesState();
 				const browserState = ColorScheme.getBrowerState();
-				if ((userState && isset(cookieState) && cookieState === 'auto') || !((isset(classState) && !autoState) ||userState))
-				{
+				if ((userState && isset(cookieState) && cookieState === 'auto') || !((isset(classState) && !autoState) || userState)) {
 					ColorScheme.change(browserState, false);
 				}
 			});
 		}
-		return ColorScheme.change(ColorScheme.getState(),false);
+		return ColorScheme.change(ColorScheme.getState(), false);
 	}
 }
 try {
@@ -257,12 +242,9 @@ try {
 	aemi.push(() => {
 		const scheme = ColorScheme.detect();
 		let support = false;
-		if (aemi instanceof Environment)
-		{
+		if (aemi instanceof Environment) {
 			support = aemi.assert('csh-sel');
-		}
-		else
-		{
+		} else {
 			support = isset(byId('color-scheme-selector'));
 		}
 		if (support) {
@@ -285,11 +267,32 @@ class Lightbox {
 			na: name || 'lightbox',
 			bo: document.body,
 			te: null,
-			Cu: { ir: null, gr: null, th: null, im: {}, is: [] },
-			An: { el: null, in: null, ch: [], ti: null },
-			Co: { nb: null, pb: null },
-			Re: { mh: null, mw: null, nh: null, nw: null },
-			St: { op: false },
+			Cu: {
+				ir: null,
+				gr: null,
+				th: null,
+				im: {},
+				is: []
+			},
+			An: {
+				el: null,
+				in: null,
+				ch: [],
+				ti: null
+			},
+			Co: {
+				nb: null,
+				pb: null
+			},
+			Re: {
+				mh: null,
+				mw: null,
+				nh: null,
+				nw: null
+			},
+			St: {
+				op: false
+			},
 		};
 		this.Pr.te = ecs({
 			id: this.in('content-wrapper'),
@@ -454,8 +457,7 @@ class Lightbox {
 	/** Window Width */
 	get width() {
 		return window.innerWidth;
-	}
-	in(_) {
+	} in (_) {
 		return `${this.name}${isset(_) ? '-' + _ : ''}`;
 	}
 	cn(_) {
@@ -477,7 +479,7 @@ class Lightbox {
 	}
 	getByGroup(g) {
 		return [
-		...this.thumbnails.filter((t) => attr(t, this.dn('group')) === g),
+			...this.thumbnails.filter((t) => attr(t, this.dn('group')) === g),
 		];
 	}
 	getPosition(t, g) {
@@ -485,7 +487,7 @@ class Lightbox {
 		for (let i = 0, l = ts.length; i < l; i += 1) {
 			const c1 = attr(t, 'src') === attr(ts[i], 'src');
 			const c2 =
-			attr(t, this.dn('index')) === attr(ts[i], this.dn('index'));
+				attr(t, this.dn('index')) === attr(ts[i], this.dn('index'));
 			const c3 = attr(t, this.dn()) === attr(ts[i], this.dn());
 			if (c1 && c2 && c3) {
 				return i;
@@ -506,8 +508,8 @@ class Lightbox {
 			qws.forEach((qwsi, i) => {
 				for (const item of qwsi.querySelectorAll(jis)) {
 					const el =
-					item.getElementsByTagName('a')[0] ||
-					item.getElementsByTagName('img')[0];
+						item.getElementsByTagName('a')[0] ||
+						item.getElementsByTagName('img')[0];
 					if (el.tagName === 'A') {
 						if (/\.(jpg|gif|png)$/.test(el.href)) {
 							attr(el, this.dn(), el.href);
@@ -536,7 +538,7 @@ class Lightbox {
 							inhibitEvent(event);
 							item.querySelector('a, img').dispatchEvent(
 								new Event('click')
-								);
+							);
 						});
 					}
 				}
@@ -544,7 +546,11 @@ class Lightbox {
 		}
 	}
 	preload() {
-		const { currGroup: cg, currImages: cis, currThumbnail: ct } = this;
+		const {
+			currGroup: cg,
+			currImages: cis,
+			currThumbnail: ct
+		} = this;
 		if (!cg) {
 			return false;
 		}
@@ -553,11 +559,11 @@ class Lightbox {
 		const pos = this.getPosition(ct, cg);
 		if (pos === cis.length - 1) {
 			prev.src =
-			attr(cis[cis.length - 1], this.dn()) || cis[cis.length - 1].src;
+				attr(cis[cis.length - 1], this.dn()) || cis[cis.length - 1].src;
 			next.src = attr(cis[0], this.dn()) || cis[0].src;
 		} else if (pos === 0) {
 			prev.src =
-			attr(cis[cis.length - 1], this.dn()) || cis[cis.length - 1].src;
+				attr(cis[cis.length - 1], this.dn()) || cis[cis.length - 1].src;
 			next.src = attr(cis[1], this.dn()) || cis[1].src;
 		} else {
 			prev.src = attr(cis[pos - 1], this.dn()) || cis[pos - 1].src;
@@ -566,7 +572,9 @@ class Lightbox {
 	}
 	startAnimation() {
 		const {
-			options: { loadingAnimation: lA },
+			options: {
+				loadingAnimation: lA
+			},
 		} = this;
 		this.stopAnimation();
 		this.animTimeout = setTimeout(() => {
@@ -579,7 +587,7 @@ class Lightbox {
 						removeClass(
 							this.animChildren[index],
 							this.cn('active')
-							);
+						);
 					}, lA);
 					index = index >= this.animChildren.length ? 0 : ++index;
 				}, lA);
@@ -588,7 +596,9 @@ class Lightbox {
 	}
 	stopAnimation() {
 		const {
-			options: { loadingAnimation: lA },
+			options: {
+				loadingAnimation: lA
+			},
 		} = this;
 		removeClass(this.box, this.cn('loading'));
 		if (!isString(lA) && lA) {
@@ -605,18 +615,23 @@ class Lightbox {
 				$: 'span',
 				class: [this.cn('next'), ...(!ni ? [this.cn('no-img')] : [])],
 				_: [
-				...(ni
-					? [{ $: 'img', attr: { src: this.options.nextImage } }]
-					: []),
+					...(ni ?
+						[{
+							$: 'img',
+							attr: {
+								src: this.options.nextImage
+							}
+						}] :
+						[]),
 				],
 				events: [
-				[
-				'click',
-				(ev) => {
-					inhibitEvent(ev);
-					this.next();
-				},
-				],
+					[
+						'click',
+						(ev) => {
+							inhibitEvent(ev);
+							this.next();
+						},
+					],
 				],
 			});
 			this.box.appendChild(this.nextButton);
@@ -628,18 +643,23 @@ class Lightbox {
 				$: 'span',
 				class: [this.cn('prev'), ...(!pi ? [this.cn('no-img')] : [])],
 				_: [
-				...(pi
-					? [{ $: 'img', attr: { src: this.options.prevImage } }]
-					: []),
+					...(pi ?
+						[{
+							$: 'img',
+							attr: {
+								src: this.options.prevImage
+							}
+						}] :
+						[]),
 				],
 				events: [
-				[
-				'click',
-				(ev) => {
-					inhibitEvent(ev);
-					this.prev();
-				},
-				],
+					[
+						'click',
+						(ev) => {
+							inhibitEvent(ev);
+							this.prev();
+						},
+					],
 				],
 			});
 			this.box.appendChild(this.prevButton);
@@ -655,9 +675,11 @@ class Lightbox {
 	}
 	setOptions(_) {
 		_ = _ || {};
+
 		function setBooleanValue(variable, def) {
 			return isBoolean(variable) ? variable : def || false;
 		}
+
 		function setStringValue(variable, def) {
 			return isString(variable) ? variable : def || false;
 		}
@@ -671,16 +693,15 @@ class Lightbox {
 			hideCloseButton: _.hideCloseButton || false,
 			closeOnClick: setBooleanValue(_.closeOnClick, true),
 			nextOnClick: setBooleanValue(_.nextOnClick, true),
-			loadingAnimation: is(_.loadingAnimation)
-			? _.loadingAnimation
-			: true,
+			loadingAnimation: is(_.loadingAnimation) ?
+				_.loadingAnimation :
+				true,
 			animationElementCount: _.animationElementCount || 4,
 			preload: setBooleanValue(_.preload, true),
 			carousel: setBooleanValue(_.carousel, true),
-			animation:
-			isNumber(_.animation) || _.animation === false
-			? _.animation
-			: 400,
+			animation: isNumber(_.animation) || _.animation === false ?
+				_.animation :
+				400,
 			responsive: setBooleanValue(_.responsive, true),
 			maxImageSize: _.maxImageSize || 0.8,
 			keyControls: setBooleanValue(_.keyControls, true),
@@ -722,7 +743,9 @@ class Lightbox {
 			this.box = byId(this.options.boxId);
 			addClass(this.box, this.cn());
 		} else if (!this.box) {
-			let el = byId(this.in()) || ecs({ id: this.in() });
+			let el = byId(this.in()) || ecs({
+				id: this.in()
+			});
 			addClass(el, this.cn());
 			this.box = el;
 			this.body.appendChild(this.box);
@@ -737,16 +760,16 @@ class Lightbox {
 					class: [this.cn('close')],
 					_: ['&#x2717;'],
 					events: [
-					[
-					'click',
-					(ev) => {
-						inhibitEvent(ev);
-						this.close();
-					},
-					],
+						[
+							'click',
+							(ev) => {
+								inhibitEvent(ev);
+								this.close();
+							},
+						],
 					],
 				})
-				);
+			);
 		}
 		if (closeOnClick) {
 			this.box.addEventListener('click', (ev) => {
@@ -760,14 +783,16 @@ class Lightbox {
 			addClass(this.animElement, this.cn('loading-animation'));
 			this.box.appendChild(this.animElement);
 		} else if (loadingAnimation) {
-			loadingAnimation = isNumber(loadingAnimation)
-			? loadingAnimation
-			: 200;
-			this.animElement = ecs({ class: [this.cn('loading-animation')] });
+			loadingAnimation = isNumber(loadingAnimation) ?
+				loadingAnimation :
+				200;
+			this.animElement = ecs({
+				class: [this.cn('loading-animation')]
+			});
 			for (let i = 0; i < animationElementCount; i += 1) {
 				this.animChildren.push(
 					this.animElement.appendChild(document.createElement('span'))
-					);
+				);
 			}
 			this.box.appendChild(this.animElement);
 		}
@@ -787,7 +812,7 @@ class Lightbox {
 						27: () => this.close(),
 						37: () => this.prev(),
 						39: () => this.next(),
-					}[ev.keyCode]());
+					} [ev.keyCode]());
 				}
 			});
 		}
@@ -831,110 +856,116 @@ class Lightbox {
 			!this.options ||
 			!is(this.options.hideOverflow) ||
 			this.options.hideOverflow
-			) {
+		) {
 			blockScroll(this.body);
-	}
-	this.box.style.paddingTop = '0';
-	this.wrapper.innerHTML = '';
-	this.wrapper.appendChild(this.currImage.img);
-	if (this.options.animation) {
-		addClass(this.wrapper, this.cn('animate'));
-	}
-	const captionText = attr(el, this.dn('caption'));
-	if (captionText && this.options.captions) {
-		this.wrapper.appendChild(
-			ecs({ $: 'p', class: [this.cn('caption')], _: [captionText] })
-			);
-	}
-	addClass(this.box, this.cn('active'));
-	if (this.options.controls && this.currImages.length > 1) {
-		this.initializeControls();
-		this.repositionControls();
-	}
-	this.currImage.img.addEventListener('error', (imageErrorEvent) => {
-		if (this.options.onloaderror) {
-			imageErrorEvent._happenedWhile = event ? event : false;
-			this.options.onloaderror(imageErrorEvent);
 		}
-	});
-	this.currImage.img.addEventListener('load', (ev) => {
-		const { target } = ev;
-		this.currImage.originalWidth = target.naturalWidth || target.width;
-		this.currImage.originalHeight =
-		target.naturalHeight || target.height;
-		const checkClassInt = setInterval(() => {
-			if (hasClass(this.box, this.cn('active'))) {
-				addClass(this.wrapper, this.cn('wrapper-active'));
-				if (isNumber(this.options.animation)) {
-					addClass(
-						this.currImage.img,
-						this.cn('animate-transition')
+		this.box.style.paddingTop = '0';
+		this.wrapper.innerHTML = '';
+		this.wrapper.appendChild(this.currImage.img);
+		if (this.options.animation) {
+			addClass(this.wrapper, this.cn('animate'));
+		}
+		const captionText = attr(el, this.dn('caption'));
+		if (captionText && this.options.captions) {
+			this.wrapper.appendChild(
+				ecs({
+					$: 'p',
+					class: [this.cn('caption')],
+					_: [captionText]
+				})
+			);
+		}
+		addClass(this.box, this.cn('active'));
+		if (this.options.controls && this.currImages.length > 1) {
+			this.initializeControls();
+			this.repositionControls();
+		}
+		this.currImage.img.addEventListener('error', (imageErrorEvent) => {
+			if (this.options.onloaderror) {
+				imageErrorEvent._happenedWhile = event ? event : false;
+				this.options.onloaderror(imageErrorEvent);
+			}
+		});
+		this.currImage.img.addEventListener('load', (ev) => {
+			const {
+				target
+			} = ev;
+			this.currImage.originalWidth = target.naturalWidth || target.width;
+			this.currImage.originalHeight =
+				target.naturalHeight || target.height;
+			const checkClassInt = setInterval(() => {
+				if (hasClass(this.box, this.cn('active'))) {
+					addClass(this.wrapper, this.cn('wrapper-active'));
+					if (isNumber(this.options.animation)) {
+						addClass(
+							this.currImage.img,
+							this.cn('animate-transition')
 						);
+					}
+					if (callback) {
+						callback();
+					}
+					this.stopAnimation();
+					clearTimeout(this.animTimeout);
+					if (this.options.preload) {
+						this.preload();
+					}
+					if (this.options.nextOnClick) {
+						addClass(this.currImage.img, this.cn('next-on-click'));
+						this.currImage.img.addEventListener('click', (ev) => {
+							inhibitEvent(ev);
+							this.next();
+						});
+					}
+					if (this.options.onimageclick) {
+						this.currImage.img.addEventListener('click', (ev) => {
+							inhibitEvent(ev);
+							this.options.onimageclick(this.currImage);
+						});
+					}
+					if (this.options.onload) {
+						this.options.onload(event);
+					}
+					clearInterval(checkClassInt);
+					this.resize();
 				}
-				if (callback) {
-					callback();
+			}, 10);
+		});
+		this.currImage.img.src = src;
+		this.startAnimation();
+	}
+	load(_) {
+		_ = _ || this.options;
+		this.setOptions(_);
+		this.push(
+			...[...document.querySelectorAll('[' + this.dn() + ']')].map(
+				(item, index) => {
+					if (attr(item, this.dn())) {
+						attr(item, this.dn('index'), index);
+					}
+					return item;
 				}
-				this.stopAnimation();
-				clearTimeout(this.animTimeout);
-				if (this.options.preload) {
-					this.preload();
-				}
-				if (this.options.nextOnClick) {
-					addClass(this.currImage.img, this.cn('next-on-click'));
-					this.currImage.img.addEventListener('click', (ev) => {
-						inhibitEvent(ev);
-						this.next();
-					});
-				}
-				if (this.options.onimageclick) {
-					this.currImage.img.addEventListener('click', (ev) => {
-						inhibitEvent(ev);
-						this.options.onimageclick(this.currImage);
-					});
-				}
-				if (this.options.onload) {
-					this.options.onload(event);
-				}
-				clearInterval(checkClassInt);
-				this.resize();
-			}
-		}, 10);
-	});
-	this.currImage.img.src = src;
-	this.startAnimation();
-}
-load(_) {
-	_ = _ || this.options;
-	this.setOptions(_);
-	this.push(
-		...[...document.querySelectorAll('[' + this.dn() + ']')].map(
-			(item, index) => {
-				if (attr(item, this.dn())) {
-					attr(item, this.dn('index'), index);
-				}
-				return item;
-			}
 			)
 		);
-}
-resize() {
-	if (!this.currImage.img) {
-		return;
 	}
-	this.maxWidth = this.width;
-	this.maxHeight = this.height;
-	const boxWidth = this.box.offsetWidth;
-	const boxHeight = this.box.offsetHeight;
-	if (
-		!this.currImgRatio &&
-		this.currImage.img &&
-		this.currImage.img.offsetWidth &&
-		this.currImage.img.offsetHeight
+	resize() {
+		if (!this.currImage.img) {
+			return;
+		}
+		this.maxWidth = this.width;
+		this.maxHeight = this.height;
+		const boxWidth = this.box.offsetWidth;
+		const boxHeight = this.box.offsetHeight;
+		if (
+			!this.currImgRatio &&
+			this.currImage.img &&
+			this.currImage.img.offsetWidth &&
+			this.currImage.img.offsetHeight
 		) {
-		this.currImgRatio =
-	this.currImage.img.offsetWidth /
-	this.currImage.img.offsetHeight;
-}
+			this.currImgRatio =
+				this.currImage.img.offsetWidth /
+				this.currImage.img.offsetHeight;
+		}
 		// Height of image is too big to fit in viewport
 		if (Math.floor(boxWidth / this.currImgRatio) > boxHeight) {
 			this.newImageWidth = boxHeight * this.currImgRatio;
@@ -948,22 +979,22 @@ resize() {
 		// decrease size with modifier
 		this.newImageWidth = Math.floor(
 			this.newImageWidth * this.options.maxImageSize
-			);
+		);
 		this.newImageHeight = Math.floor(
 			this.newImageHeight * this.options.maxImageSize
-			);
+		);
 		// check if image exceeds maximum size
 		if (
 			(this.options.dimensions &&
 				this.newImageHeight > this.currImage.originalHeight) ||
 			(this.options.dimensions &&
 				this.newImageWidth > this.currImage.originalWidth)
-			) {
+		) {
 			this.newImageHeight = this.currImage.originalHeight;
-		this.newImageWidth = this.currImage.originalWidth;
-	}
-	attr(this.currImage.img, 'width', this.newImageWidth);
-	attr(this.currImage.img, 'height', this.newImageHeight);
+			this.newImageWidth = this.currImage.originalWidth;
+		}
+		attr(this.currImage.img, 'width', this.newImageWidth);
+		attr(this.currImage.img, 'height', this.newImageHeight);
 		// reposition controls after timeout
 		setTimeout(() => {
 			this.repositionControls();
@@ -995,11 +1026,11 @@ resize() {
 							addClass(
 								this.currImage.img,
 								this.cn('animating-next')
-								);
+							);
 						}, this.options.animation / 2);
 					},
 					'next'
-					);
+				);
 			}, this.options.animation / 2);
 		} else {
 			this.open(this.currThumbnail, false, false, 'next');
@@ -1028,11 +1059,11 @@ resize() {
 							addClass(
 								this.currImage.img,
 								this.cn('animating-next')
-								);
+							);
 						}, this.options.animation / 2);
 					},
 					'prev'
-					);
+				);
 			}, this.options.animation / 2);
 		} else {
 			this.open(this.currThumbnail, false, false, 'prev');
@@ -1057,13 +1088,13 @@ resize() {
 			!this.options ||
 			!is(this.options.hideCloseButton) ||
 			this.options.hideOverflow
-			) {
+		) {
 			freeScroll(this.body);
+		}
+		if (this.options.onclose) {
+			this.options.onclose(img);
+		}
 	}
-	if (this.options.onclose) {
-		this.options.onclose(img);
-	}
-}
 }
 
 try {
@@ -1073,16 +1104,15 @@ try {
 } catch (_) {
 	aemi.push(() => {
 		for (const menu of byClass('menu')) {
-			if ( !['header-menu', 'header-social', 'footer-menu'].includes( menu.id ) )
-			{
-				for (const parent of byClass('menu-item-has-children', menu))
-				{
-					if (parent.getElementsByTagName('li').length > 0)
-					{
+			if (!['header-menu', 'header-social', 'footer-menu'].includes(menu.id)) {
+				for (const parent of byClass('menu-item-has-children', menu)) {
+					if (parent.getElementsByTagName('li').length > 0) {
 						parent.insertBefore(
 							ecs({
 								class: ['toggle'],
-								_: [{ class: ['toggle-element'] }],
+								_: [{
+									class: ['toggle-element']
+								}],
 							}),
 							parent.childNodes[1]
 						);
@@ -1097,23 +1127,22 @@ try {
 	if (isFunction(aemi_loop)) {
 		aemi.push(aemi_loop);
 	}
-}
-catch (_) {
+} catch (_) {
 	aemi.push(() => {
 		if (aemi.assert('site-loop')) {
 			const loop = aemi.get('site-loop');
 			const entries = loop.getElementsByClassName('entry');
-			for ( const entry of entries ) {
+			for (const entry of entries) {
 				const anchor = entry.getElementsByTagName('a')[0];
 				if (is(anchor)) {
-					entry.addEventListener('click',() => {
+					entry.addEventListener('click', () => {
 						anchor.click();
 					});
-					entry.addEventListener('mouseenter',() => {
-						addClass(entry,':hover');
+					entry.addEventListener('mouseenter', () => {
+						addClass(entry, ':hover');
 					});
-					entry.addEventListener('mouseleave',() => {
-						removeClass(entry,':hover');
+					entry.addEventListener('mouseleave', () => {
+						removeClass(entry, ':hover');
 					});
 				}
 			}
@@ -1125,8 +1154,7 @@ try {
 	if (isFunction(aemi_form_fix)) {
 		aemi.push(aemi_form_fix);
 	}
-}
-catch (_) {
+} catch (_) {
 	aemi.push(() => {
 		for (const form of document.getElementsByClassName('comment-form')) {
 			form.removeAttribute('novalidate');
@@ -1157,7 +1185,9 @@ try {
 	}
 } catch (_) {
 	aemi.push(() =>
-		new Lightbox({ env: aemi }).prepare({
+		new Lightbox({
+			env: aemi
+		}).prepare({
 			wrapperSelectors: [
 				'.gallery',
 				'.blocks-gallery-grid',
@@ -1185,92 +1215,97 @@ try {
 		const classScrolled = 'page-scrolled';
 		const classHidden = 'header-hidden';
 		const aemi_header_auto_hide = autoHide =>
-		requestFrame((startTime) => {
-			const currentState = {
-				startTime: startTime,
-				height: document.body.clientHeight,
-				position: window.scrollY,
-			};
-			setTimeout(
-				(observable, currentState) => requestFrame(
-					(currentTime, observable, currentState) => {
-						const { startTime, height, position, } = currentState;
-						const currentPosition = window.scrollY;
-						const menuToggler = aemi.get('nav-toggle');
-						const searchToggler = aemi.get('sea-toggle');
-						if (position > 0) {
-							addClass(observable, classScrolled);
-						} else {
-							removeClass(observable, classScrolled);
-						}
-						if (
-							autoHide &&
-							(!menuToggler || !isToggled(menuToggler)) &&
-							(!searchToggler || !isToggled(searchToggler))
-						) {
-							const elapsedTime = currentTime - startTime;
-							if (elapsedTime > 100) {
-								const elapsedDistance =
-								currentPosition - position;
-								const $11 = Math.round( (1000 * elapsedDistance) / elapsedTime );
-								if ( !hasClass(observable, classHidden) )
-								{
-									if ( $11 > 0 && position > 0 && position + window.innerHeight < height )
-									{
-										addClass( observable, classHidden );
+			requestFrame((startTime) => {
+				const currentState = {
+					startTime: startTime,
+					height: document.body.clientHeight,
+					position: window.scrollY,
+				};
+				setTimeout(
+					(observable, currentState) => requestFrame(
+						(currentTime, observable, currentState) => {
+							const {
+								startTime,
+								height,
+								position,
+							} = currentState;
+							const currentPosition = window.scrollY;
+							const menuToggler = aemi.get('nav-toggle');
+							const searchToggler = aemi.get('sea-toggle');
+							if (position > 0) {
+								addClass(observable, classScrolled);
+							} else {
+								removeClass(observable, classScrolled);
+							}
+							if (
+								autoHide &&
+								(!menuToggler || !isToggled(menuToggler)) &&
+								(!searchToggler || !isToggled(searchToggler))
+							) {
+								const elapsedTime = currentTime - startTime;
+								if (elapsedTime > 100) {
+									const elapsedDistance =
+										currentPosition - position;
+									const $11 = Math.round((1000 * elapsedDistance) / elapsedTime);
+									if (!hasClass(observable, classHidden)) {
+										if ($11 > 0 && position > 0 && position + window.innerHeight < height) {
+											addClass(observable, classHidden);
+										}
+									} else if (
+										($11 < 0 && position > 0 && position + window.innerHeight < height) ||
+										position <= 0 || position + window.innerHeight >= height) {
+										removeClass(observable, classHidden);
 									}
-								} else if (
-									($11 < 0 && position > 0 && position + window.innerHeight < height) ||
-									position <= 0 || position + window.innerHeight >= height )
-								{
-									removeClass( observable, classHidden );
 								}
 							}
-						}
-					},
-					observable,
+						},
+						observable,
+						currentState
+					),
+					100,
+					document.body,
 					currentState
-				),
-				100,
-				document.body,
-				currentState
-			);
-		});
+				);
+			});
 		const aemi_progress_bar = () =>
-		requestFrame(() => {
-			const totalHeight =
-			document.body.clientHeight - window.innerHeight;
-			const progress = window.scrollY / totalHeight;
-			aemi.get('pro-bar').style.width = `${
+			requestFrame(() => {
+				const totalHeight =
+					document.body.clientHeight - window.innerHeight;
+				const progress = window.scrollY / totalHeight;
+				aemi.get('pro-bar').style.width = `${
 				100 * (progress > 1 ? 1 : progress)
 			}vw`;
-		});
-		const features = [
-		{
-			test: [aemi.assert('pro-bar')],
-			func: aemi_progress_bar,
-			args: [],
-		},
-		{
-			test: [],
-			func: aemi_header_auto_hide,
-			args: [hasClass(document.body, 'header-auto-hide')],
-		},
-		{
-			test: [true],
-			func: changeHeaderScheme,
-			args: [],
-		},
+			});
+		const features = [{
+				test: [aemi.assert('pro-bar')],
+				func: aemi_progress_bar,
+				args: [],
+			},
+			{
+				test: [],
+				func: aemi_header_auto_hide,
+				args: [hasClass(document.body, 'header-auto-hide')],
+			},
+			{
+				test: [true],
+				func: changeHeaderScheme,
+				args: [],
+			},
 		];
 
-		features.forEach(({ test, func, args }) => {
+		features.forEach(({
+			test,
+			func,
+			args
+		}) => {
 			if (test.every((t) => t === true)) {
-				for (const type of ['scroll','resize']) {
+				for (const type of ['scroll', 'resize']) {
 					window.addEventListener(
 						type,
-						() => func(...args),
-						{ passive: true }
-						);
+						() => func(...args), {
+							passive: true
+						}
+					);
 				}
 			}
 		});
@@ -1283,12 +1318,15 @@ try {
 	}
 } catch (_) {
 	aemi.push(() => {
-		const toggleFilter = [ aemi.get('nav-toggle'), aemi.get('sea-toggle') ];
+		const toggleFilter = [aemi.get('nav-toggle'), aemi.get('sea-toggle')];
+
 		function togglerHandler(mutationRecords) {
-			for ( const { target } of mutationRecords ) {
-				const alts = toggleFilter.filter( e => e !== target );
+			for (const {
+					target
+				} of mutationRecords) {
+				const alts = toggleFilter.filter(e => e !== target);
 				if (isToggled(target)) {
-					for ( const alt of alts.filter( e => isToggled(e) ) ) {
+					for (const alt of alts.filter(e => isToggled(e))) {
 						doToggle(byId(data(alt, 'target')));
 						doToggle(alt);
 					}
@@ -1302,28 +1340,29 @@ try {
 			}
 		}
 		const togglerObserver = new MutationObserver(togglerHandler);
-		togglerObserver.observe( aemi.get('nav-toggle'), {
+		togglerObserver.observe(aemi.get('nav-toggle'), {
 			attributes: true,
 			attributeFilter: ['class']
-		} );
-		togglerObserver.observe( aemi.get('sea-toggle'), {
+		});
+		togglerObserver.observe(aemi.get('sea-toggle'), {
 			attributes: true,
 			attributeFilter: ['class']
-		} );
+		});
 
 		function colorSchemeHandler(mutationRecords) {
-			for ( const { target } of mutationRecords ) {
-				if ( schemeCoherenceCondition() ) {
+			for (const {
+					target
+				} of mutationRecords) {
+				if (schemeCoherenceCondition()) {
 					changeHeaderScheme();
-				}
-				else if ( hasClass(document.body,'has-post-thumbnail') ) {
-					ColorScheme.toDarkScheme( aemi.get('site-header') );
-					aemi.assert('pro-bar') && ColorScheme.toDarkScheme( aemi.get('pro-bar') );
+				} else if (hasClass(document.body, 'has-post-thumbnail')) {
+					ColorScheme.toDarkScheme(aemi.get('site-header'));
+					aemi.assert('pro-bar') && ColorScheme.toDarkScheme(aemi.get('pro-bar'));
 				}
 			}
 		}
 		const colorSchemeObserver = new MutationObserver(colorSchemeHandler);
-		colorSchemeObserver.observe( document.body, {
+		colorSchemeObserver.observe(document.body, {
 			attributes: true,
 			attributeFilter: ['class']
 		});
@@ -1345,10 +1384,9 @@ try {
 				url = new URL(link.href);
 				hash = url.hash;
 				external = window.location.origin !== url.origin;
-				scrollable =
-				!external &&
-				window.location.pathname === url.pathname &&
-				isset(hash);
+				scrollable = !external &&
+					window.location.pathname === url.pathname &&
+					isset(hash);
 			} catch (_) {
 				if (link.href.indexOf('#') >= 0) {
 					hash = link.href.split('?')[0];
