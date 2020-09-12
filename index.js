@@ -1,26 +1,29 @@
 const express = require('express');
 const app = express();
-const path = require('path');
 const port = 3000;
+
+// EJS
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
 // Static
 app.use(express.static('public'));
 
 // Routes
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/views/home.html'));
+  res.render('home');
 });
 
 app.get('/cours-profs', (req, res) => {
-  res.sendFile(path.join(__dirname + '/views/cours-profs.html'));
+  res.render('cours-profs');
 });
 
 app.get('/outils', (req, res) => {
-  res.sendFile(path.join(__dirname + '/views/outils.html'));
+  res.render('outils');
 });
 
 app.get('/contact', (req, res) => {
-  res.sendFile(path.join(__dirname + '/views/contact.html'));
+  res.render('contact');
 });
 
 // Search
@@ -32,7 +35,7 @@ app.get('/search/:query?', (req, res) => {
 // Error page not found
 app.use((req, res, next) => {
   res.status(404);
-  res.sendFile(path.join(__dirname + '/views/404.html'));
+  res.render('errors/404');
 });
 
 app.listen(port, () => {

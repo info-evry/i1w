@@ -1,0 +1,48 @@
+<aside id="site-aside">
+    <nav id="navigation-wrapper" class="wrapper">
+        <div class="header-block no-overlay-menu">
+            <ul id="overlay-header-menu" class="overlay-header-menu menu">
+                <li class="menu-item"><a href="/" aria-current="page">Accueil</a></li>
+                <li class="menu-item menu-item-has-children">
+                    <a href="/cours-profs">Cours &amp; Profs</a>
+                    <div class="toggle">
+                        <div class="toggle-element"></div>
+                    </div>
+                    <ul class="sub-menu">
+                        <li class="menu-item"><a href="/outils">Outils</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item"><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+        <div id="header-settings" class="header-block">
+            <form class="settings-set" id="color-scheme-selector">
+                <div class="color-scheme-option">
+                    <input type="radio" id="light-scheme-option" class="color-scheme-input" name="color-scheme-option">
+                    <label for="light-scheme-option" class="color-scheme-label">Light</label>
+                </div>
+                <div class="color-scheme-option">
+                    <input type="radio" id="dark-scheme-option" class="color-scheme-input" name="color-scheme-option">
+                    <label for="dark-scheme-option" class="color-scheme-label">Dark</label>
+                </div>
+                <div class="color-scheme-option">
+                    <input type="radio" id="auto-scheme-option" class="color-scheme-input" name="color-scheme-option"
+                        checked="">
+                    <label for="auto-scheme-option" class="color-scheme-label">Auto</label>
+                </div>
+            </form>
+        </div>
+    </nav>
+    <div id="search-wrapper" class="wrapper">
+        <form role="search" method="get" class="search-form" action="https://info-evry.fr/">
+            <div id="search-container">
+                <label class="screen-reader-text" for="search-input-1">Search for …</label>
+                <input type="search" id="search-input-1" class="search-input" placeholder="Search for …" value=""
+                    name="s" title="Search for …" required="">
+                <button type="submit" class="search-submit no-style" title="Search">
+                    <span class="search-icon"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</aside>
