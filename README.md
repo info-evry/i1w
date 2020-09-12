@@ -48,8 +48,8 @@ Informations : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
     `npm install`
 
 #### Utilisation
-    
-    * Lancement de nodejs
+
+* Lancement de nodejs
 
     `npm start`
 
