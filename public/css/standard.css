@@ -452,6 +452,7 @@ a img {
 	opacity: 1;
 	transition: opacity var(--tr-short) var(--tr-func);
 }
+
 a:hover img,
 a:visited:hover img {
 	opacity: 0.7;
@@ -540,12 +541,12 @@ h6,
 	margin: 1.67em 0 1.67em;
 }
 
-* + h1,
-* + h2,
-* + h3,
-* + h4,
-* + h5,
-* + h6 {
+*+h1,
+*+h2,
+*+h3,
+*+h4,
+*+h5,
+*+h6 {
 	margin-top: 3em;
 }
 
@@ -629,11 +630,11 @@ details[open] {
 	padding-bottom: 0.8em;
 }
 
-details > summary {
+details>summary {
 	border-radius: var(--radius);
 }
 
-details[open] > summary {
+details[open]>summary {
 	border-radius: var(--radius) var(--radius) 0 0;
 }
 
@@ -676,7 +677,7 @@ summary::before {
 	transform: translateY(0.25em) rotateX(0deg);
 }
 
-summary + * {
+summary+* {
 	margin-top: 0.5rem;
 }
 
@@ -733,12 +734,12 @@ pre {
 }
 
 pre,
-:not(pre) > code,
+:not(pre)>code,
 kbd {
 	background-color: var(--element-background);
 }
 
-:not(pre) > code,
+:not(pre)>code,
 kbd,
 mark,
 var {
@@ -749,7 +750,7 @@ var {
 	padding-right: 0.5ch;
 }
 
-:not(pre) > code,
+:not(pre)>code,
 kbd,
 var {
 	border: 1px solid var(--element-border);
@@ -770,7 +771,7 @@ pre {
 	word-wrap: break-word;
 }
 
-pre > code {
+pre>code {
 	overflow-x: auto;
 	white-space: nowrap;
 }
@@ -922,7 +923,7 @@ textarea {
 }
 
 button:not(.no-style),
-.button > a:not(.no-style),
+.button>a:not(.no-style),
 a.button:not(.no-style),
 input[type='button']:not(.no-style),
 input[type='submit']:not(.no-style),
@@ -947,8 +948,8 @@ input[type='reset']:not(.no-style) {
 }
 
 button:not(:disabled):not(.no-style):hover,
-.button > a:not(.no-style):hover,
-.button > a:not(.no-style):visited:hover,
+.button>a:not(.no-style):hover,
+.button>a:not(.no-style):visited:hover,
 a.button:not(.no-style):hover,
 a.button:not(.no-style):visited:hover,
 input[type='button']:not(:disabled):not(.no-style):hover,
@@ -966,8 +967,8 @@ input[type='reset']:not(:disabled):not(.no-style):hover {
 
 button:not(:disabled):not(.no-style):active,
 button:not(:disabled):not(.no-style):hover:active,
-.button > a:not(.no-style):active,
-.button > a:not(.no-style):hover:active,
+.button>a:not(.no-style):active,
+.button>a:not(.no-style):hover:active,
 a.button:not(:disabled):active,
 a.button:not(:disabled):hover:active,
 input[type='button']:not(:disabled):active,
