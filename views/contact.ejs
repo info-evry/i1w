@@ -12,6 +12,27 @@
                     </div>
                 </header>
                 <main class="post-content">
+                    <div>
+                        <form action="???">
+                            <label for="name">Nom<sup>*</sup></label><br>
+                            <input type="text" id="name" name="name" placeholder="Votre nom.." required><br>
+
+                            <label for="pathway">Filière</label><br>
+                            <input type="text" id="pathway" name="pathway" placeholder="e. g. L1 INFO par ex."><br>
+                            <!--nb. 'pathway' ~ 'filière' in english, to adapt to our need (may be a select list, or whatever else), maybe useless 
+                                (ex. L1 INFO, M1 MIAGE ...) to identify easily message sender.-->
+                                
+                            <label for="subject">Objet<sup>*</sup></label><br>
+                            <input type="text" id="subject" name="subject" placeholder="Ce dont vous aller parler.." required><br>
+
+                            <label for="message">Message<sup>*</sup></label><br>
+                            <textarea id="subject" name="subject" placeholder="Ce que vous voulez nous dire.." required></textarea><br>
+                            
+                            <input type="submit" value="Envoyer">
+                            <p>(Les champs indiqués par un astérisque <sup>*</sup> sont obligatoires.)</p>
+                        </form>
+                        
+                    </div>
                     <p>Si vous voulez nous contacter, veuillez utiliser le formulaire ci-dessous ou envoyez un mail
                         à&nbsp;: <a class="mailprof" data-pread="contact" data-postad="info-evry.fr"
                             href="javascript:void(0)" rel="noopener"><span
