@@ -2,23 +2,21 @@
 
 const version = '0.1.0';
 const cacheName = `i1w-${version}`;
-self.addEventListener( 'install', e => {
-	const timeStamp = Date.now();
-	e.waitUntil(
+self.addEventListener( 'install', event => {
+	event.waitUntil(
 		caches.open( cacheName ).then( cache => {
 			return cache.addAll( [
-				'/',
-				`/?timestamp=${timeStamp}`,
-				`/cours-profs?timestamp=${timeStamp}`,
-				`/outils?timestamp=${timeStamp}`,
-				`/contact?timestamp=${timeStamp}`,
-				`/css/standard.css?timestamp=${timeStamp}`,
-				`/css/style.css?timestamp=${timeStamp}`,
-				`/js/script.js?timestamp=${timeStamp}`,
-				`/js/aemi.js?timestamp=${timeStamp}`,
-				`/js/edt.js?timestamp=${timeStamp}`,
-				`/img/infoevry-h-lsc.png.webp?timestamp=${timeStamp}`,
-				`/img/infoevry-h-dsc.png.webp?timestamp=${timeStamp}`
+				`./`,
+				`./cours-profs`,
+				`./outils`,
+				`./contact`,
+				`./css/standard.css`,
+				`./css/style.css`,
+				`./js/script.js`,
+				`./js/pwa.js`,
+				`./js/edt.js`,
+				`./img/infoevry-h-lsc.png.webp`,
+				`./img/infoevry-h-dsc.png.webp`
 			] )
 				.then( () => self.skipWaiting() );
 		} )

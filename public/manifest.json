@@ -2,6 +2,7 @@
     "name": "Info Evry",
     "short_name": "InfoEvry",
     "description": "Site internet des etudiants du département informatique d'Evry",
+    "start_url": ".",
     "icons": [{
             "src": "img/icons/android-chrome-192x192.png",
             "sizes": "192x192",
@@ -14,11 +15,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/?homescreen=1",
-    "scope": "/",
-    "theme_color": "#000000",
-    "background_color": "#000000",
-    "display": "standalone",
-    "orientation": "portrait",
-    "lang": "French"
+    "theme_color": "#0081EC",
+    "background_color": "#0056E8",
+    "display": "standalone" 
 }
