@@ -12,8 +12,8 @@
                     </div>
                 </header>
                 <main class="post-content">
-                    <form method="POST" action="/contact" class="contact-form">
-                        <label for="name">Nom <span class="required">*</span></label><br>
+                    <form action="???" class="contact-form">
+                        <label for="name">Nom<sup>*</sup></label><br>
                         <input type="text" id="name" name="name" placeholder="Votre nom.." required>
 
                         <label for="pathway">Filière</label><br>
@@ -21,15 +21,13 @@
                         <!--nb. 'pathway' ~ 'filière' in english, to adapt to our need (may be a select list, or whatever else), maybe useless 
                                 (ex. L1 INFO, M1 MIAGE ...) to identify easily message sender.-->
 
-                        <label for="subject">Objet <span class="required">*</span></label><br>
+                        <label for="subject">Objet<sup>*</sup></label><br>
                         <input type="text" id="subject" name="subject" placeholder="Ce dont vous aller parler.."
                             required>
-
-                        <label for="message">Message <span class="required">*</span></label><br>
-                        <textarea id="message" name="message" placeholder="Ce que vous voulez nous dire.."
+                        <label for="message">Message<sup>*</sup></label><br>
+                        <textarea id="subject" name="subject" placeholder="Ce que vous voulez nous dire.."
                             required></textarea>
-
-                        <p>(Les champs indiqués par un astérisque <span class="required">*</span> sont obligatoires.)</p>
+                        <p>(Les champs indiqués par un astérisque <sup>*</sup> sont obligatoires.)</p>
 
                         <input type="submit" value="Envoyer">
                     </form>
