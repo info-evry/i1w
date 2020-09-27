@@ -8,7 +8,7 @@ Information : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
 
 #### Installation de node.js 
 
-* Note : version actuelle de node.js sur le server : 10.22.0.
+* Note : version actuelle de node.js sur le serveur : 10.22.0.
 
     Nous pourrions nous contenter de la v10.19.0 (version des dépôts officiels d'Ubuntu 20.04)par exemple, mais tant qu'à faire autant prendre la même version.
 
@@ -18,7 +18,7 @@ Information : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
 
 * Installer le gestionnaire de version de node.js
     
-    `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash`
+    `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash`
     
     (url donnée à titre indicatif, à vérifier sur [le dépôt de nvm](https://github.com/nvm-sh/nvm))
 
