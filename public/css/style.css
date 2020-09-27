@@ -2230,10 +2230,6 @@ body:not(.singular) .post-header .post-meta>* {
     line-height: 1 !important
 }
 
-#edt-form optgroup {
-    background-color: #282828;
-}
-
 #edt-form input[type=number] {
     width: 7em;
 }
