@@ -1021,6 +1021,11 @@ select {
 	width: auto;
 }
 
+optgroup,
+option {
+	background-color: var(--input-background);
+}
+
 /* Checkbox + Radio */
 
 input[type='checkbox']::-ms-check {
