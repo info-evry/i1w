@@ -12,7 +12,7 @@
                     </div>
                 </header>
                 <main class="post-content">
-                    <form action="???" class="contact-form">
+                    <form method="POST" action="/contact" class="contact-form">
                         <label for="name">Nom<sup>*</sup></label><br>
                         <input type="text" id="name" name="name" placeholder="Votre nom.." required>
 
@@ -24,9 +24,11 @@
                         <label for="subject">Objet<sup>*</sup></label><br>
                         <input type="text" id="subject" name="subject" placeholder="Ce dont vous aller parler.."
                             required>
+
                         <label for="message">Message<sup>*</sup></label><br>
-                        <textarea id="subject" name="subject" placeholder="Ce que vous voulez nous dire.."
+                        <textarea id="message" name="message" placeholder="Ce que vous voulez nous dire.."
                             required></textarea>
+
                         <p>(Les champs indiqués par un astérisque <sup>*</sup> sont obligatoires.)</p>
 
                         <input type="submit" value="Envoyer">

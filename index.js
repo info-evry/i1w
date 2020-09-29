@@ -44,6 +44,9 @@ app.use( compression( { level: 9 } ) );
 // Static
 app.use( express.static( 'public' ) );
 
+// Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({extended: true}));
+
 // Routes
 app.get( '/', ( req, res ) => {
 	res.render( 'home' );
@@ -59,6 +62,15 @@ app.get( '/outils', ( req, res ) => {
 
 app.get( '/contact', ( req, res ) => {
 	res.render( 'contact' );
+} );
+
+app.post( '/contact', ( req, res ) => {
+	const name = req.body.name;
+	const pathway = req.body.pathway;
+	const subject = req.body.subject;
+	const message = req.body.message;
+    console.log(`Contact form:\n${name}\n${pathway}\n${subject}\n${message}`);
+    res.redirect("/contact");
 } );
 
 // Search
