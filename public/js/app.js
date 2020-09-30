@@ -189,7 +189,7 @@ child.push( async function () {
 			const b = a.getUTCDay() || 7;
 			a.setUTCDate( a.getUTCDate() + 4 - b );
 			const c = new Date( Date.UTC( a.getUTCFullYear(), 0, 1 ) );
-			return Math.ceil( (  ( a - c ) / 86400000  + 1 ) / 7 );
+			return Math.ceil( ( ( a - c ) / 86400000 + 1 ) / 7 );
 		};
 
 		function updateLink() {
@@ -219,7 +219,7 @@ child.push( async function () {
 			}
 		}
 
-		if (  'form' in __global__.edt  && is( __global__.edt.form ) ) {
+		if ( 'form' in __global__.edt && is( __global__.edt.form ) ) {
 			const { edt } = __global__;
 			const { has, get } = Cookies;
 			const { cookieName, setCookie, today } = edt;

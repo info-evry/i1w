@@ -812,26 +812,26 @@ class ColorScheme {
 	static change( scheme, cookie ) {
 		const env = getGlobal();
 		switch ( scheme ) {
-		case 'dark': {
-			removeClass( document.body, 'color-scheme-light', false );
-			addClass( document.body, 'color-scheme-dark', false );
-			break;
-		}
-		case 'light': {
-			removeClass( document.body, 'color-scheme-dark', false );
-			addClass( document.body, 'color-scheme-light', false );
-			break;
-		}
-		case 'auto': {
-			const browserState = ColorScheme.getBrowerState() || ColorScheme.getClassState() || 'light';
-			const oppositeState = ColorScheme.getOppositeState( browserState );
-			removeClass( document.body, `color-scheme-${oppositeState}` );
-			addClass( document.body, `color-scheme-${browserState}` );
-			break;
-		}
-		default: {
-			throw new Error( 'scheme is not defined.' );
-		}
+			case 'dark': {
+				removeClass( document.body, 'color-scheme-light', false );
+				addClass( document.body, 'color-scheme-dark', false );
+				break;
+			}
+			case 'light': {
+				removeClass( document.body, 'color-scheme-dark', false );
+				addClass( document.body, 'color-scheme-light', false );
+				break;
+			}
+			case 'auto': {
+				const browserState = ColorScheme.getBrowerState() || ColorScheme.getClassState() || 'light';
+				const oppositeState = ColorScheme.getOppositeState( browserState );
+				removeClass( document.body, `color-scheme-${oppositeState}` );
+				addClass( document.body, `color-scheme-${browserState}` );
+				break;
+			}
+			default: {
+				throw new Error( 'scheme is not defined.' );
+			}
 		}
 		if ( 'colorScheme' in env ) {
 			env.colorScheme.scheme = scheme;
@@ -1862,8 +1862,7 @@ aemi.push( async function aemi_view_handler() {
 			const totalHeight =
 				document.body.clientHeight - window.innerHeight;
 			const progress = window.scrollY / totalHeight;
-			aemi.get( 'pro-bar' ).style.width = `${100 * ( progress > 1 ? 1 : progress )
-			}vw`;
+			aemi.get( 'pro-bar' ).style.width = `${100 * ( progress > 1 ? 1 : progress )}vw`;
 		} );
 	const features = [{
 		test: [aemi.assert( 'pro-bar' )],
