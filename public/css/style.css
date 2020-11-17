@@ -2174,6 +2174,18 @@ body:not(.singular) .post-header .post-meta>* {
     background-color: var(--element-background)
 }
 
+.utility-links {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	padding: 0;
+}
+
+.utility-link {
+	display: inline;
+	height: 100%;
+}
+
 .element:first-child {
     margin-top: 0
 }
