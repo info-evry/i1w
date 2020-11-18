@@ -2177,13 +2177,30 @@ body:not(.singular) .post-header .post-meta>* {
 .utility-links {
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-between;
+	justify-content: space-evenly;
+	list-style: none;
+	background-color: transparent;
 	padding: 0;
 }
 
-.utility-link {
-	display: inline;
-	height: 100%;
+.el-utility {
+	margin: 0 .33rem 0;
+	flex: 1 1 0;
+	word-break: break-all;
+}
+
+.el-utility:first-child {
+	margin-left: 0;
+}
+
+.el-utility:last-child {
+	margin-right: 0;
+}
+
+.el-utility-content {
+	flex: 1 1 0;
+	padding: 0;
+	margin: 0;
 }
 
 .element:first-child {
