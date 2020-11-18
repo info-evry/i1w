@@ -7,7 +7,7 @@
         <div id="main-content">
             <article class="entry">
                 <main class="post-content">
-					<ul class="utility-links element">
+					<ul class="element el-utilities">
 						<li class="element el-utility">
 							<a href="javascript:void(0);">
 								<img class="el-utility-content" src="img/icons/calandar-icon-100x100.png" alt="calandar" width="30" height="30">
@@ -33,71 +33,7 @@
 					<!--
                         <h2 class="el-title">Bonjour</h2> <a class="el-content toggle aaa" id="edt-element"
                             href="javascript:void(0);" rel="noopener">Consulter l’emploi du temps&nbsp;→</a>
-                        <div class="el-add">
-                            <div id="edt-container">
-                                <div id="edt-form">
-                                    <div class="grade-block">
-                                        <select id="edt-grade">
-                                            <optgroup label="M2">
-                                                <option value="68419887" selected="">M2 SA</option>
-                                                <option value="68419888">M2 SR</option>
-                                                <option value="68419883">M2 MIAGE I.</option>
-                                                <option value="6">M2 MIAGE A.</option>
-                                            </optgroup>
-                                            <optgroup label="M1">
-                                                <option value="68425740">M1 INFO G1</option>
-                                                <option value="68425741">M1 INFO G2</option>
-                                                <option value="68426833">M1 INFO SA</option>
-                                                <option value="68426834">M1 INFO SR</option>
-                                                <option value="68419919">M1 MIAGE I.</option>
-                                                <option value="68419886">M1 MIAGE A.</option>
-                                            </optgroup>
-                                            <optgroup label="L3">
-                                                <option value="68419893">L3 SA</option>
-                                                <option value="68419892">L3 SR</option>
-                                                <option value="68419891">L3 MIAGE I.</option>
-                                                <option value="7">L3 MIAGE A.</option>
-                                                <option value="68426751">L3 DOUBLE</option>
-                                            </optgroup>
-                                            <optgroup label="L2">
-                                                <option value="68426361">L2 INFO G1</option>
-                                                <option value="68426362">L2 INFO G2</option>
-                                                <option value="68426891">L2 INFO G3</option>
-                                                <option value="68426987">L2 INFO G4</option>
-                                            </optgroup>
-                                            <optgroup label="L1">
-                                                <option value="18">L1 MI G1</option>
-                                                <option value="8">L1 MI G2</option>
-                                                <option value="68426495">L1 MI G3</option>
-                                                <option value="68426747">L1 MI G4</option>
-                                                <option value="68426748">L1 MI G5</option>
-                                                <option value="68426749">L1 MI G6</option>
-                                            </optgroup>
-                                        </select>
-                                        <input type="button" id="set-default-cookie" value="Conserver ce choix">
-                                    </div>
-                                    <div class="date-block">
-                                        <input type="button" id="edt-comeback" value="Aujourd'hui">
-                                        <input type="button" class="edt-backward" value="-">
-                                        <input type="button" class="edt-forward" value="+">
-                                        <input type="number" id="edt-week" min="1" max="52">
-                                        <input type="number" id="edt-year" min="2017" max="2099">
-                                    </div>
-                                </div>
-                                <div id="edt-img-cont"><img id="edt-img"
-                                        src="https://edt.univ-evry.fr/vue_etudiant_horizontale.php?current_year=2020&amp;current_student=68419887&amp;current_week=37&amp;lar=1920&amp;hau=1080"
-                                        alt="EDT">
-                                </div>
-                                <div id="modal-bar">
-                                    <div class="edt-backward">←</div>
-                                    <div id="modal-close">fermer</div>
-                                    <div class="edt-forward">→</div>
-                                </div>
-                                <div id="edt-info">Cliquer sur l’image pour agrandir.</div>
-                            </div>
-                        </div>
-					</div>
-				-->
+					-->
                     <a class="element" href="https://ecampus.paris-saclay.fr" target="_blank"
                         rel="noopener noreferrer nofollow">
                         <h2 class="el-title">ECAMPUS</h2>
@@ -130,7 +66,76 @@
                 </main>
                 <footer class="post-footer"></footer>
             </article>
-        </div>
+		</div>
+		
+		<div class="el-modal-bg">
+			<div class ="el-modal element">
+				<span class="el-close">&times;</span>
+				<div class="el-add">
+					<div id="edt-container">
+						<div id="edt-form">
+							<div class="grade-block">
+								<select id="edt-grade">
+									<optgroup label="M2">
+										<option value="68419887" selected="">M2 SA</option>
+										<option value="68419888">M2 SR</option>
+										<option value="68419883">M2 MIAGE I.</option>
+										<option value="6">M2 MIAGE A.</option>
+									</optgroup>
+									<optgroup label="M1">
+										<option value="68425740">M1 INFO G1</option>
+										<option value="68425741">M1 INFO G2</option>
+										<option value="68426833">M1 INFO SA</option>
+										<option value="68426834">M1 INFO SR</option>
+										<option value="68419919">M1 MIAGE I.</option>
+										<option value="68419886">M1 MIAGE A.</option>
+									</optgroup>
+									<optgroup label="L3">
+										<option value="68419893">L3 SA</option>
+										<option value="68419892">L3 SR</option>
+										<option value="68419891">L3 MIAGE I.</option>
+										<option value="7">L3 MIAGE A.</option>
+										<option value="68426751">L3 DOUBLE</option>
+									</optgroup>
+									<optgroup label="L2">
+										<option value="68426361">L2 INFO G1</option>
+										<option value="68426362">L2 INFO G2</option>
+										<option value="68426891">L2 INFO G3</option>
+										<option value="68426987">L2 INFO G4</option>
+									</optgroup>
+									<optgroup label="L1">
+										<option value="18">L1 MI G1</option>
+										<option value="8">L1 MI G2</option>
+										<option value="68426495">L1 MI G3</option>
+										<option value="68426747">L1 MI G4</option>
+										<option value="68426748">L1 MI G5</option>
+										<option value="68426749">L1 MI G6</option>
+									</optgroup>
+								</select>
+								<input type="button" id="set-default-cookie" value="Conserver ce choix">
+							</div>
+							<div class="date-block">
+								<input type="button" id="edt-comeback" value="Aujourd'hui">
+								<input type="button" class="edt-backward" value="-">
+								<input type="button" class="edt-forward" value="+">
+								<input type="number" id="edt-week" min="1" max="52">
+								<input type="number" id="edt-year" min="2017" max="2099">
+							</div>
+						</div>
+						<div id="edt-img-cont"><img id="edt-img"
+								src="https://edt.univ-evry.fr/vue_etudiant_horizontale.php?current_year=2020&amp;current_student=68419887&amp;current_week=37&amp;lar=1920&amp;hau=1080"
+								alt="EDT">
+						</div>
+						<div id="modal-bar">
+							<div class="edt-backward">←</div>
+							<div id="modal-close">fermer</div>
+							<div class="edt-forward">→</div>
+						</div>
+						<div id="edt-info">Cliquer sur l’image pour agrandir.</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </main>
 
     <%- include('includes/footer') %>
