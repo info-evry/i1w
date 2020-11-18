@@ -52,6 +52,7 @@
 	--light-element-border-alpha: rgba(230, 230, 230, 0.6);
 	--light-element-border: rgba(230, 230, 230, 0.7);
 	--light-element-border-hover: rgba(230, 230, 230, 0.8);
+	--light-element-modal-background-color: rgba(230, 230, 230,1);/*Obligé de la rajouter sinon les fenetres modales avaient un fond transparent avec le thème light*/
 	--light-border-alpha: rgba(230, 230, 230, 0.6);
 	--light-border: rgba(230, 230, 230, 0.7);
 	--light-border-hover: rgba(230, 230, 230, 0.8);
@@ -283,6 +284,7 @@
 	--caption-background-hover: var(--light-caption-background-hover);
 	--element-background-alpha: var(--light-element-background-alpha);
 	--element-background: var(--light-element-background);
+	--element-modal-background: var(--light-element-modal-background-color);
 	--element-background-hover: var(--light-element-background-hover);
 	--element-border-alpha: var(--light-element-border-alpha);
 	--element-border: var(--light-element-border);
@@ -334,6 +336,7 @@
 	--caption-background-hover: var(--dark-caption-background-hover);
 	--element-background-alpha: var(--dark-element-background-alpha);
 	--element-background: var(--dark-element-background);
+	--element-modal-background: var(--element-background);
 	--element-background-hover: var(--dark-element-background-hover);
 	--element-border-alpha: var(--dark-element-border-alpha);
 	--element-border: var(--dark-element-border);

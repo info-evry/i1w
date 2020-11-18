@@ -383,6 +383,23 @@ child.push( async function () {
 			updateImage();
 		}
 	}
+
 } );
+
+let elModalCloses = document.querySelectorAll(".el-modal-close");
+
+elModalCloses.forEach((elModalClose) => {
+	elModalClose.addEventListener('click', () => {
+		document.querySelectorAll('.el-modal-bg').forEach((elModal) => {
+			elModal.style.display = 'none';
+			document.getElementById('site-header').style.display = 'flex';
+		});
+	});
+});
+
+document.getElementById("el-utility-edt").onclick = () => {
+	document.getElementById("el-modal-edt").style.display = "flex";
+	document.getElementById('site-header').style.display = 'none';
+};
 
 child.run();
