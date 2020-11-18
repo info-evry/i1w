@@ -2174,7 +2174,7 @@ body:not(.singular) .post-header .post-meta>* {
     background-color: var(--element-background)
 }
 
-.utility-links {
+.el-utilities {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-evenly;
@@ -2249,6 +2249,36 @@ body:not(.singular) .post-header .post-meta>* {
 .aaa:hover {
     opacity: .7;
     transition: opacity .3s ease
+}
+
+/*--------------------------------------------------------------
+# WODAL WINDOW
+--------------------------------------------------------------*/
+
+.el-modal-bg {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, .8);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.el-close {
+	top: 0;
+	right: 0;
+	font-size: 15px;
+}
+
+.el-modal {
+	min-height: 66%;
+	min-width: 66%;
+	border-radius: 15px;
+	box-shadow: 0 0 50px black;
 }
 
 /*--------------------------------------------------------------
