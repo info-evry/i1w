@@ -2252,7 +2252,7 @@ body:not(.singular) .post-header .post-meta>* {
 }
 
 /*--------------------------------------------------------------
-# WODAL WINDOW
+# MODAL WINDOW
 --------------------------------------------------------------*/
 
 .el-modal-bg {
@@ -2263,22 +2263,31 @@ body:not(.singular) .post-header .post-meta>* {
 	left: 0;
 	background-color: rgba(0, 0, 0, .8);
 
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 }
 
-.el-close {
-	top: 0;
-	right: 0;
-	font-size: 15px;
-}
-
 .el-modal {
+	justify-content: flex-start;
 	min-height: 66%;
 	min-width: 66%;
 	border-radius: 15px;
-	box-shadow: 0 0 50px black;
+	background-color: var(--element-modal-background);
+	box-shadow: 0 0 60px black;
+}
+
+.el-modal > .el-add {
+	justify-self: center;
+}
+
+.el-modal-close {
+	top: 0;
+	right: 0;
+	font-size: 40px;
+	align-self: flex-end;
+	cursor: pointer;
+	flex: 0 0 auto;
 }
 
 /*--------------------------------------------------------------
