@@ -384,22 +384,22 @@ child.push( async function () {
 		}
 	}
 
-} );
+	/*TODO: quit when clicking the little 'x' or outside the modal window */
+	let elModalCloses = document.querySelectorAll(".el-modal-close");
 
-let elModalCloses = document.querySelectorAll(".el-modal-close");
-
-elModalCloses.forEach((elModalClose) => {
-	elModalClose.addEventListener('click', () => {
-		document.querySelectorAll('.el-modal-bg').forEach((elModal) => {
-			elModal.style.display = 'none';
-			document.getElementById('site-header').style.display = 'flex';
+	elModalCloses.forEach((elModalClose) => {
+		elModalClose.addEventListener('click', () => {
+			document.querySelectorAll('.el-modal-bg').forEach((elModal) => {
+				elModal.style.display = 'none';
+				document.getElementById('site-header').style.display = 'flex';
+			});
 		});
 	});
-});
 
-document.getElementById("el-utility-edt").onclick = () => {
-	document.getElementById("el-modal-edt").style.display = "flex";
-	document.getElementById('site-header').style.display = 'none';
-};
+	document.getElementById("el-utility-edt").onclick = () => {
+		document.getElementById("el-modal-edt").style.display = "flex";
+		document.getElementById('site-header').style.display = 'none';
+	};
+} );
 
 child.run();
