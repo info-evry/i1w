@@ -870,6 +870,12 @@ body:not(.color-scheme-dark) #site-header.color-scheme-dark .light-scheme-logo:n
     transition: opacity var(--tr-short) var(--tr-func);
 }
 
+.color-scheme-dark .light-scheme-icon:not(:only-child) img,
+.color-scheme-light .dark-scheme-icon:not(:only-child) img {
+    opacity: 0;
+    transition: opacity var(--tr-short) var(--tr-func);
+}
+
 /*--------------------------------------------------------------
 # Theme Switcher
 --------------------------------------------------------------*/
