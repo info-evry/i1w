@@ -67,18 +67,18 @@ child.push( async function () {
 
 child.push( async function () {
 	const __global__ = getGlobal();
-	if ( is( __global__ ) ) {
+	if ( __global__ ) {
 		__global__.edt = {
 			cookieName: 'univgrade',
-			toggle: byId( 'edt-element' ),
-			form: byId( 'edt-form' ),
-			img: byId( 'edt-img' ),
-			imgContainer: byId( 'edt-img-cont' ),
-			grade: byId( 'edt-grade' ),
-			week: byId( 'edt-week' ),
-			year: byId( 'edt-year' ),
-			comeback: byId( 'edt-comeback' ),
-			setCookie: byId( 'set-default-cookie' ),
+			toggle: document.getElementById( 'edt-element' ),
+			form: document.getElementById( 'edt-form' ),
+			img: document.getElementById( 'edt-img' ),
+			imgContainer: document.getElementById( 'edt-img-cont' ),
+			grade: document.getElementById( 'edt-grade' ),
+			week: document.getElementById( 'edt-week' ),
+			year: document.getElementById( 'edt-year' ),
+			comeback: document.getElementById( 'edt-comeback' ),
+			setCookie: document.getElementById( 'set-default-cookie' ),
 			today: {},
 			current: {},
 			grades: [{
@@ -207,11 +207,11 @@ child.push( async function () {
 		function updateImage() {
 			const { edt } = __global__;
 			const { imgContainer } = edt;
-			const img = byId( 'edt-img' );
-			if ( is( img ) ) {
+			const img = document.getElementById( 'edt-img' );
+			if ( img ) {
 				edt.img = img;
 				img.src = updateLink();
-			} else if ( is( imgContainer ) ) {
+			} else if ( imgContainer ) {
 				const img = new Image();
 				img.id = 'edt-img';
 				img.src = updateLink();
@@ -219,7 +219,7 @@ child.push( async function () {
 			}
 		}
 
-		if ( 'form' in __global__.edt && is( __global__.edt.form ) ) {
+		if ( 'form' in __global__.edt && __global__.edt.form ) {
 			const { edt } = __global__;
 			const { has, get } = Cookies;
 			const { cookieName, setCookie, today } = edt;
@@ -302,7 +302,7 @@ child.push( async function () {
 				toggleClass( imgContainer, 'modal-active' );
 			}
 			imgContainer.addEventListener( 'click', toggleModalActive );
-			byId( 'modal-close' ).addEventListener( 'click', toggleModalActive );
+			document.getElementById( 'modal-close' ).addEventListener( 'click', toggleModalActive );
 
 			function backward() {
 				const { edt } = __global__;
