@@ -872,7 +872,6 @@ body:not(.color-scheme-dark) #site-header.color-scheme-dark .light-scheme-logo:n
 
 .color-scheme-dark .light-scheme-icon:not(:only-child),
 .color-scheme-light .dark-scheme-icon:not(:only-child){
-	display: none;
     opacity: 0;
     transition: opacity var(--tr-short) var(--tr-func);
 }
@@ -2196,6 +2195,15 @@ body:not(.singular) .post-header .post-meta>* {
 	word-break: break-all;
 }
 
+.utility-logos {
+	display: grid;
+    height: 2.5rem;
+}
+
+.utility-logos img {
+	grid-area: 1 / 1;
+}
+
 .el-utility:first-child {
 	margin-left: 0;
 }
@@ -2262,6 +2270,15 @@ body:not(.singular) .post-header .post-meta>* {
 # MODAL WINDOW
 --------------------------------------------------------------*/
 
+body.modal-active {
+	height: 100vh;
+	overflow-y: hidden;
+}
+
+.modal-winwdows {
+	display: none;
+}
+
 .el-modal-bg {
 	position: fixed;
 	width: 100%;
@@ -2274,6 +2291,15 @@ body:not(.singular) .post-header .post-meta>* {
 	display: none;
 	justify-content: center;
 	align-items: center;
+}
+
+.modal-quit-zone {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	display: none;
 }
 
 .el-modal {

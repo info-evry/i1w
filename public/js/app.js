@@ -384,21 +384,26 @@ child.push( async function () {
 		}
 	}
 
-	/*TODO: quit when clicking the little 'x' or outside the modal window */
-	let elModalCloses = document.querySelectorAll(".el-modal-close");
-
-	elModalCloses.forEach((elModalClose) => {
-		elModalClose.addEventListener('click', () => {
-			document.querySelectorAll('.el-modal-bg').forEach((elModal) => {
-				elModal.style.display = 'none';
-				document.getElementById('site-header').style.display = 'flex';
-			});
+	function closeModals () {
+		document.querySelectorAll('.el-modal-bg').forEach(elModalBg => {
+			elModalBg.style.display = 'none';
 		});
-	});
+		document.body.classList.toggle('modal-active');
+	}
+
+	document.querySelectorAll('.el-modal-close').forEach(elModalClose => {
+		elModalClose.addEventListener('click',closeModals);
+	})
+	document.querySelectorAll('.el-modal-bg').forEach(elModalBg => {
+		elModalBg.addEventListener('click',closeModals);
+	})
+	document.querySelectorAll('.el-modal').forEach(elModal => {
+		elModal.onclick = event => { event.stopPropagation(); };
+	})
 
 	document.getElementById("el-utility-edt").onclick = () => {
 		document.getElementById("el-modal-edt").style.display = "flex";
-		document.getElementById('site-header').style.display = 'none';
+		document.body.classList.toggle('modal-active');
 	};
 } );
 
