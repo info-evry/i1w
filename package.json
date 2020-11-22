@@ -4,7 +4,8 @@
   "description": "Info Evry Website",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --ext \"js,ejs,css\" ."
+	"start": "node .",
+    "dev": "nodemon --ext \"js,ejs,css\" ."
   },
   "repository": {
     "type": "git",
