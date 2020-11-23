@@ -384,27 +384,24 @@ child.push( async function () {
 		}
 	}
 
-	function closeModals () {
-		document.querySelectorAll('.el-modal-bg').forEach(elModalBg => {
-			elModalBg.style.display = 'none';
-		});
+	function toggleModal(modalWindowID) {
 		document.body.classList.toggle('modal-active');
+		document.querySelector('.modal-windows-container').classList.toggle('modal-active');
+		if (modalWindowID !== (null | ''))
+			document.getElementById(modalWindowID).classList.toggle('modal-active');
 	}
 
-	document.querySelectorAll('.el-modal-close').forEach(elModalClose => {
-		elModalClose.addEventListener('click',closeModals);
-	})
-	document.querySelectorAll('.el-modal-bg').forEach(elModalBg => {
-		elModalBg.addEventListener('click',closeModals);
-	})
-	document.querySelectorAll('.el-modal').forEach(elModal => {
-		elModal.onclick = event => { event.stopPropagation(); };
-	})
+	function closeModal() {
+		const openModal = document.querySelector('.modal-windows-container .el-modal-window .modal-active');
+		toggleModal(openModal.id.toString());
+	}
 
-	document.getElementById("el-utility-edt").onclick = () => {
-		document.getElementById("el-modal-edt").style.display = "flex";
-		document.body.classList.toggle('modal-active');
-	};
+	document.querySelector('.el-modal-bg').addEventListener('click', closeModal);
+	document.querySelector('.el-modal-close').addEventListener('click', closeModal);
+
+	document.getElementById('el-utility-edt').onclick = () => { toggleModal('el-modal-edt'); };
+	document.getElementById('el-utility-weather').onclick = () => { toggleModal('el-modal-weather'); };
+	document.getElementById('el-utility-transport').onclick = () => { toggleModal('el-modal-transport'); };
 } );
 
 child.run();

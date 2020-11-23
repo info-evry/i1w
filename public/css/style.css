@@ -2275,45 +2275,51 @@ body.modal-active {
 	overflow-y: hidden;
 }
 
-.modal-winwdows {
+.modal-windows-container:not(.modal-active) {
 	display: none;
 }
 
-.el-modal-bg {
+/*TODO: Generic rule ?*/
+.modal-windows-container .el-modal-window #el-modal-edt:not(.modal-active),
+.modal-windows-container .el-modal-window #el-modal-weather:not(.modal-active),
+.modal-windows-container .el-modal-window #el-modal-transport:not(.modal-active) {
+	display: none;
+}
+
+.modal-windows-container.modal-active {
 	position: fixed;
-	width: 100%;
-	height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
 	top: 0;
 	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 100000;
+}
+
+.el-modal-bg {
+	grid-area: 1/1;
+	width: 100%;
+	height: 100%;
 	background-color: var(--dark-page-color-alpha);
 	cursor: pointer;
 
-	display: none;
 	justify-content: center;
 	align-items: center;
 }
 
-.modal-quit-zone {
-	position: fixed;
-	width: 100%;
-	height: 100vh;
-	top: 0;
-	left: 0;
-	display: none;
-}
-
-.el-modal {
+.el-modal-window {
+	grid-area: 1/1;
+	align-self: center;
+	justify-self: center;
 	justify-content: flex-start;
-	min-height: 66%;
-	min-width: 66%;
+	max-height: 66%;
+	max-width: 66%;
 	border-radius: 15px;
 	background-color: var(--page-color);
 	box-shadow: 0px 5px 50px -2px rgba(0, 0, 0, 0.75);
 	cursor: default;
-}
-
-.el-modal > .el-add {
-	justify-self: center;
 }
 
 .el-modal-close {
