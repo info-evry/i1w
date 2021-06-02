@@ -18,7 +18,7 @@
   "homepage": "https://github.com/info-evry/i1w#readme",
   "dependencies": {
     "compression": "^1.7.4",
-    "ejs": "^3.1.5",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "helmet": "^4.1.1"
   },
