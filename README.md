@@ -7,7 +7,7 @@ Info Evry Website - NodeJS Edition
 
 Information : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
 
-* Note : version actuelle de Node.js sur le serveur : 10.22.0.
+* Note : version actuelle de Node.js sur le serveur : <s>10.22.0</s> ⚠️ Cette information est très régulièrement obsolète, au fur et à mesure des changement des mises à jour de NodeJS sur le serveur, si vous voulez installé la version utilisé en ce moment, veuillez contacter les adminsys / dev du site *i1w*.
 
     Nous pourrions nous contenter de la v10.19.0 (version des dépôts officiels d'Ubuntu 20.04) par exemple, mais tant qu'à faire autant prendre la même version.
 
