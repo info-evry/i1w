@@ -7,9 +7,9 @@ Info Evry Website - NodeJS Edition
 
 Information : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
 
-* Note : version actuelle de Node.js sur le serveur : <s>10.22.0</s> ⚠️ Cette information est très régulièrement obsolète, au fur et à mesure des changement des mises à jour de NodeJS sur le serveur, si vous voulez installé la version utilisé en ce moment, veuillez contacter les adminsys / dev du site *i1w*.
+* Note : version actuelle de Node.js sur le serveur : <s>10.22.0</s> ⚠️ Cette information est très régulièrement obsolète, au fur et à mesure des changements des mises à jour de NodeJS sur le serveur, si vous voulez installé la version utilisée en ce moment, veuillez contacter les adminsys / dev du site *i1w*.
 
-    Nous pourrions nous contenter de la v10.19.0 (version des dépôts officiels d'Ubuntu 20.04) par exemple, mais tant qu'à faire autant prendre la même version.
+    Nous pourrions nous contenter de la v10.19.0 (version des dépôts officiels d'Ubuntu 20.04, à la date de l'écriture de ce tuto) par exemple, mais tant qu'à faire autant prendre la même version, pour éviter les problèmes de compatibilité.
 
 * Installer le gestionnaire de paquet de nodejs
 
@@ -19,7 +19,7 @@ Information : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
     
     `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash`
     
-    (url donnée à titre indicatif, à vérifier sur [le dépôt de nvm](https://github.com/nvm-sh/nvm))
+    (url donnée à titre indicatif, à vérifier sur [le dépôt de nvm](https://github.com/nvm-sh/nvm), notamment si la version, ici `v0.36.0`, n'a pas évolué à mesure des nouvelles *releases*)
 
 * Installer node v10.22.0
     
@@ -27,17 +27,19 @@ Information : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
 
     (vous pouvez vérifier la version avec un petit `node -v`)
 
-* Pour les autres OS:
+* Pour les autres OS (MS Windows par exemple):
 
 	https://nodejs.org/en/download/
 
-#### Syncronisation des dépôts git en local
+#### Syncronisation des dépôts git en local 
 
-* Cloner le dépôt (faites le dans un dossier adéquat, hein !)
+_Nota bene:_ il vous faudra possiblement installer `git` sur votre machine, auparavant
+
+* Cloner le dépôt (faites le dans un dossier adéquat, hein ?!)
 
     `git clone --branch dev https://github.com/info-evry/i1w`
 
-* Se déplacer le dossier du projet
+* Se déplacer dans le dossier du projet
 
     `cd i1w`
 
@@ -60,14 +62,14 @@ Information : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
     
     [http://localhost:3000/](http://localhost:3000/)
 
-#### Environement de dev pour VSCode
+#### Environement de dev pour VSCode (ou [VSCodium](https://vscodium.com), si vous souhaitez éviter la télémétrie de Microsoft)
 
 * Configuration
 
 	* Créer un dossier `.vscode` à la racine du projet
 	* Puis créer un fichier `settings.json` dededans:
 	```
-	{
+{
     "javascript.autoClosingTags": true,    
     "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
     "javascript.format.semicolons": "insert",
@@ -98,10 +100,16 @@ Information : procédure testée sur Ubuntu 20.04, à adapter suivant l'OS...
     "editor.insertSpaces": false,
 	"editor.detectIndentation": false,
 	"files.eol": "\n",
-	}	
+}	
 	```
 
 * Installer l'extention ESLint
 
 #### Liens utiles : 
 * [Ressources sur Git et GitHub](https://drive.google.com/drive/folders/1_rNCJo7CVhF24G4-dElnr_7u4Rsmc7xR)
+
+Bienvenue parmis l'équipe développeurs !
+
+
+
+<p align="center">tutoriel mis à jour à la rentrée 2021 pour les nouveaux arrivants. 😜</p>
