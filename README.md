@@ -68,7 +68,7 @@ _Nota bene:_ il vous faudra possiblement installer `git` sur votre machine, aupa
 
 	* Créer un dossier `.vscode` à la racine du projet
 	* Puis créer un fichier `settings.json` dededans:
-	```
+```json
 {
     "javascript.autoClosingTags": true,    
     "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
@@ -101,7 +101,7 @@ _Nota bene:_ il vous faudra possiblement installer `git` sur votre machine, aupa
 	"editor.detectIndentation": false,
 	"files.eol": "\n",
 }	
-	```
+```
 
 * Installer l'extention ESLint
 
