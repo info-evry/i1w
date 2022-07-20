@@ -99,4 +99,4 @@ http.createServer(app).listen(httpPort, () => {
 
 https.createServer(app).listen(httpsPort, () => {
 	console.log( `HTTPS server listening at http://localhost:${httpsPort}` );
-})
+});

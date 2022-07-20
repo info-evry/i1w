@@ -387,8 +387,9 @@ child.push( async function () {
 	function toggleModal(modalWindowID) {
 		document.body.classList.toggle('modal-active');
 		document.querySelector('.modal-windows-container').classList.toggle('modal-active');
-		if (modalWindowID !== (null | ''))
+		if (modalWindowID !== (null | '')){
 			document.getElementById(modalWindowID).classList.toggle('modal-active');
+		}
 	}
 
 	function closeModal() {
@@ -396,7 +397,7 @@ child.push( async function () {
 		toggleModal(openModal.id.toString());
 	}
 
-	document.querySelector('.el-modal-bg').addEventListener('click', closeModal);
+	document.querySelector('.modal-windows-container').addEventListener('click', closeModal);
 	document.querySelector('.el-modal-close').addEventListener('click', closeModal);
 
 	document.getElementById('el-utility-edt').onclick = () => { toggleModal('el-modal-edt'); };
