@@ -2315,7 +2315,7 @@ body.modal-active {
 	overflow: hidden;
 }
 
-.el-modal-close {
+#el-modal-close {
 	top: 0;
 	right: 0;
 	font-size: 40px;
@@ -2438,29 +2438,6 @@ body.color-scheme-dark .used:hover {
 	max-height: 100%;
 }
 
-
-/*#edt-img-cont img {
-    width: 100%;
-    transition: .3s all ease
-}
-
-#edt-img-cont:not(.modal-active) {
-    position: relative
-}
-
-#edt-img-cont {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    margin: auto;
-    padding: 0;
-    height: auto;
-    width: 100%;
-    background-color: var(--page-color);
-    cursor: pointer
-}
-
 #edt-img-cont.modal-active {
     position: fixed;
     top: 0;
@@ -2492,6 +2469,28 @@ body.color-scheme-dark .used:hover {
     bottom: 0;
     z-index: 1000;
     transition: .3s all ease
+}
+
+/*#edt-img-cont img {
+    width: 100%;
+    transition: .3s all ease
+}
+
+#edt-img-cont:not(.modal-active) {
+    position: relative
+}
+
+#edt-img-cont {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+    padding: 0;
+    height: auto;
+    width: 100%;
+    background-color: var(--page-color);
+    cursor: pointer
 }*/
 
 #edt-info {

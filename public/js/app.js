@@ -301,8 +301,7 @@ child.push( async function () {
 				const { imgContainer } = edt;
 				toggleClass( imgContainer, 'modal-active' );
 			}
-			/*imgContainer.addEventListener( 'click', toggleModalActive );
-			document.getElementById( 'modal-close' ).addEventListener( 'click', toggleModalActive );*/
+			imgContainer.addEventListener( 'click', toggleModalActive );
 
 			function backward() {
 				const { edt } = __global__;
@@ -399,8 +398,9 @@ child.push( async function () {
 
 	document.querySelector('.modal-windows-container').addEventListener('click', closeModal);
 	document.querySelector('.el-modal-window').addEventListener('click', e => { e.stopPropagation(); });
-	document.querySelector('.el-modal-close').addEventListener('click', closeModal);
+	document.querySelector('#el-modal-close').addEventListener('click', closeModal);
 
+	// activation of the modal window
 	document.getElementById('el-utility-edt').onclick = () => { toggleModal('el-modal-edt'); };
 	document.getElementById('el-utility-weather').onclick = () => { toggleModal('el-modal-weather'); };
 	document.getElementById('el-utility-transport').onclick = () => { toggleModal('el-modal-transport'); };
