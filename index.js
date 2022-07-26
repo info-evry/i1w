@@ -3,10 +3,6 @@ const compression = require( 'compression' );
 const express = require( 'express' );
 const app = express();
 const port = 3000;
-const httpPort = 800;
-const httpsPort = 4430;
-const http = require('http');
-const https = require('https');
 
 // EJS
 app.set( 'views', './views' );
@@ -92,11 +88,3 @@ app.use( ( req, res, next ) => {
 app.listen( port, () => {
 	console.log( `Server listening at http://localhost:${port}` );
 } );
-
-http.createServer(app).listen(httpPort, () => {
-	console.log( `HTTP server listening at http://localhost:${httpPort}` );
-});
-
-https.createServer(app).listen(httpsPort, () => {
-	console.log( `HTTPS server listening at http://localhost:${httpsPort}` );
-});

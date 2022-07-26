@@ -301,8 +301,8 @@ child.push( async function () {
 				const { imgContainer } = edt;
 				toggleClass( imgContainer, 'modal-active' );
 			}
-			imgContainer.addEventListener( 'click', toggleModalActive );
-			document.getElementById( 'modal-close' ).addEventListener( 'click', toggleModalActive );
+			/*imgContainer.addEventListener( 'click', toggleModalActive );
+			document.getElementById( 'modal-close' ).addEventListener( 'click', toggleModalActive );*/
 
 			function backward() {
 				const { edt } = __global__;
@@ -378,9 +378,9 @@ child.push( async function () {
 				current.grade = grade.options[grade.selectedIndex].value;
 				current.week = week.value;
 				current.year = year.value;
-				updateImage();
+				// updateImage();
 			} );
-			updateImage();
+			// updateImage();
 		}
 	}
 

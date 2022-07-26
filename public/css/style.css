@@ -2306,14 +2306,13 @@ body.modal-active {
 	/* modal windows are direct childs of modal-windows-container.
 	modal window container has a width and height of 100vh/vw.
 	Why getting the width and size of the modal-window to 66vh and 66vw hasn't the same effect as setting them to 66% ?*/
-	max-height: 66vh;
-	max-width: 66vw;
 	width: 66vw;
 	height: 66vh;
 	border-radius: 15px;
 	background-color: var(--page-color);
 	box-shadow: 0px 5px 50px -2px rgba(0, 0, 0, 0.75);
 	cursor: default;
+	overflow: hidden;
 }
 
 .el-modal-close {
@@ -2337,10 +2336,20 @@ body.modal-active {
     width: 7em;
 }
 
-#edt-container {
+#el-modal-edt {
     display: flex;
-    flex-flow: column nowrap;
-    align-items: center
+    flex-flow: column;
+    align-items: center;
+	justify-content: flex-start;
+	overflow: hidden;
+}
+
+#el-modal-edt >*:not(:first-child) {
+	margin: 1em 0 0;
+}
+
+#edt-img {
+	overflow: hidden;
 }
 
 #edt-form {
@@ -2351,9 +2360,9 @@ body.modal-active {
     width: 100%
 }
 
-#edt-container>*:not(:first-child) {
+/* #edt-container>*:not(:first-child) {
     margin: 1em 0 0
-}
+} */
 
 #edt-form>* {
     display: flex;
@@ -2421,7 +2430,7 @@ body.color-scheme-dark .used:hover {
     transition: .3s all ease
 }
 
-#edt-img-cont img {
+/*#edt-img-cont img {
     width: 100%;
     transition: .3s all ease
 }
@@ -2474,7 +2483,7 @@ body.color-scheme-dark .used:hover {
     bottom: 0;
     z-index: 1000;
     transition: .3s all ease
-}
+}*/
 
 #edt-info {
     margin-top: .5em
