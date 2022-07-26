@@ -398,6 +398,7 @@ child.push( async function () {
 	}
 
 	document.querySelector('.modal-windows-container').addEventListener('click', closeModal);
+	document.querySelector('.el-modal-window').addEventListener('click', e => { e.stopPropagation(); });
 	document.querySelector('.el-modal-close').addEventListener('click', closeModal);
 
 	document.getElementById('el-utility-edt').onclick = () => { toggleModal('el-modal-edt'); };
