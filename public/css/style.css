@@ -2348,9 +2348,7 @@ body.modal-active {
 	margin: 1em 0 0;
 }
 
-#edt-img {
-	overflow: hidden;
-}
+
 
 #edt-form {
     display: flex;
@@ -2429,6 +2427,17 @@ body.color-scheme-dark .used:hover {
     cursor: pointer;
     transition: .3s all ease
 }
+
+#edt-img-cont {
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#edt-img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
 
 /*#edt-img-cont img {
     width: 100%;
