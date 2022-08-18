@@ -377,9 +377,9 @@ child.push( async function () {
 				current.grade = grade.options[grade.selectedIndex].value;
 				current.week = week.value;
 				current.year = year.value;
-				// updateImage();
+				updateImage();
 			} );
-			// updateImage();
+			updateImage();
 		}
 	}
 
