@@ -388,9 +388,7 @@ child.push( async function () {
 	function toggleModal(modalWindowID) {
 		document.body.classList.toggle('modal-active');
 		document.querySelector('.modal-windows-container').classList.toggle('modal-active');
-		if (modalWindowID !== (null | '')){
-			document.getElementById(modalWindowID).classList.toggle('modal-active');
-		}
+		document.getElementById(modalWindowID).classList.toggle('modal-active');
 	}
 
 	function closeModal() {
