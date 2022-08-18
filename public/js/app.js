@@ -301,7 +301,9 @@ child.push( async function () {
 				const { imgContainer } = edt;
 				toggleClass( imgContainer, 'modal-active' );
 			}
+
 			imgContainer.addEventListener( 'click', toggleModalActive );
+			document.getElementById('edt-fs-close').onclick = () => { toggleModalActive(); };
 
 			function backward() {
 				const { edt } = __global__;
