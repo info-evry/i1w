@@ -12,7 +12,7 @@ app.set( 'view engine', 'ejs' );
 function initHelmet( app, helmet ) {
 	app.use( helmet.contentSecurityPolicy( {
 		directives: {
-			defaultSrc: ['\'self\''],
+			defaultSrc: ['\'self\'', 'edt.univ-evry.fr'],
 			baseUri: ['\'self\''],
 			blockAllMixedContent: [],
 			fontSrc: ['\'self\'', 'https:', 'data:'],

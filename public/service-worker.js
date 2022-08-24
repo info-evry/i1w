@@ -15,6 +15,7 @@ self.addEventListener( 'install', event => {
 				'./js/script.js',
 				'./js/pwa.js',
 				'./js/app.js',
+				'./js/sncf.js',
 				'./img/infoevry-h-lsc.png.webp',
 				'./img/infoevry-h-dsc.png.webp'
 			] )

@@ -870,6 +870,12 @@ body:not(.color-scheme-dark) #site-header.color-scheme-dark .light-scheme-logo:n
     transition: opacity var(--tr-short) var(--tr-func);
 }
 
+.color-scheme-dark .light-scheme-icon:not(:only-child),
+.color-scheme-light .dark-scheme-icon:not(:only-child){
+    opacity: 0;
+    transition: opacity var(--tr-short) var(--tr-func);
+}
+
 /*--------------------------------------------------------------
 # Theme Switcher
 --------------------------------------------------------------*/
@@ -2174,6 +2180,44 @@ body:not(.singular) .post-header .post-meta>* {
     background-color: var(--element-background)
 }
 
+.el-utilities {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-evenly;
+	list-style: none;
+	background-color: transparent;
+	padding: 0;
+}
+
+.el-utility {
+	margin: 0 .33rem 0;
+	flex: 1 1 0;
+	word-break: break-all;
+}
+
+.utility-logos {
+	display: grid;
+    height: 2.5rem;
+}
+
+.utility-logos img {
+	grid-area: 1 / 1;
+}
+
+.el-utility:first-child {
+	margin-left: 0;
+}
+
+.el-utility:last-child {
+	margin-right: 0;
+}
+
+.el-utility-content {
+	flex: 1 1 0;
+	padding: 0;
+	margin: 0;
+}
+
 .element:first-child {
     margin-top: 0
 }
@@ -2223,6 +2267,64 @@ body:not(.singular) .post-header .post-meta>* {
 }
 
 /*--------------------------------------------------------------
+# MODAL WINDOW
+--------------------------------------------------------------*/
+
+body.modal-active {
+	height: 100vh;
+	overflow-y: hidden;
+}
+
+.modal-windows-container:not(.modal-active) {
+	display: none;
+}
+
+/*TODO: Generic rule ?*/
+.modal-windows-container .el-modal-window #el-modal-edt:not(.modal-active),
+.modal-windows-container .el-modal-window #el-modal-weather:not(.modal-active),
+.modal-windows-container .el-modal-window #el-modal-transport:not(.modal-active) {
+	display: none;
+}
+
+.modal-windows-container.modal-active {
+	position: absolute;
+	display: grid;
+	grid-template-columns: 1/1;
+	background-color: var(--dark-page-color-alpha);
+	width: 100vw;
+	height: 100vh;
+	top: 0px;
+	left: 0px;
+	z-index: 100000; /*Is it possible to get rid of that ?*/
+	cursor: pointer;
+	justify-content: center;
+	align-content: center;
+}
+
+.el-modal-window {
+	justify-content: flex-start;
+	/* modal windows are direct childs of modal-windows-container.
+	modal window container has a width and height of 100vh/vw.
+	Why getting the width and size of the modal-window to 66vh and 66vw hasn't the same effect as setting them to 66% ?*/
+	width: 66vw;
+	height: 66vh;
+	border-radius: 15px;
+	background-color: var(--page-color);
+	box-shadow: 0px 5px 50px -2px rgba(0, 0, 0, 0.75);
+	cursor: default;
+	overflow: hidden;
+}
+
+#el-modal-close {
+	top: 0;
+	right: 0;
+	font-size: 40px;
+	align-self: flex-end;
+	cursor: pointer;
+	flex: 0 0 auto;
+}
+
+/*--------------------------------------------------------------
 # EDT
 --------------------------------------------------------------*/
 
@@ -2234,11 +2336,19 @@ body:not(.singular) .post-header .post-meta>* {
     width: 7em;
 }
 
-#edt-container {
+#el-modal-edt {
     display: flex;
-    flex-flow: column nowrap;
-    align-items: center
+    flex-flow: column;
+    align-items: center;
+	justify-content: flex-start;
+	overflow: hidden;
 }
+
+#el-modal-edt >*:not(:first-child) {
+	margin: 1em 0 0;
+}
+
+
 
 #edt-form {
     display: flex;
@@ -2248,9 +2358,9 @@ body:not(.singular) .post-header .post-meta>* {
     width: 100%
 }
 
-#edt-container>*:not(:first-child) {
+/* #edt-container>*:not(:first-child) {
     margin: 1em 0 0
-}
+} */
 
 #edt-form>* {
     display: flex;
@@ -2318,26 +2428,14 @@ body.color-scheme-dark .used:hover {
     transition: .3s all ease
 }
 
-#edt-img-cont img {
-    width: 100%;
-    transition: .3s all ease
-}
-
-#edt-img-cont:not(.modal-active) {
-    position: relative
-}
-
 #edt-img-cont {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    margin: auto;
-    padding: 0;
-    height: auto;
-    width: 100%;
-    background-color: var(--page-color);
-    cursor: pointer
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#edt-img {
+	max-width: 100%;
+	max-height: 100%;
 }
 
 #edt-img-cont.modal-active {
@@ -2373,8 +2471,49 @@ body.color-scheme-dark .used:hover {
     transition: .3s all ease
 }
 
+/*#edt-img-cont img {
+    width: 100%;
+    transition: .3s all ease
+}
+
+#edt-img-cont:not(.modal-active) {
+    position: relative
+}
+
+#edt-img-cont {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+    padding: 0;
+    height: auto;
+    width: 100%;
+    background-color: var(--page-color);
+    cursor: pointer
+}*/
+
 #edt-info {
     margin-top: .5em
+}
+
+/*--------------------------------------------------------------
+# Transport modal
+--------------------------------------------------------------*/
+
+#fetch-error:not(.active) {
+	display: none;
+}
+
+.fetch-error-banner.active {
+	position: absolute;
+	top: 0;
+	left: 13px;
+	font-size: x-small;
+	border-radius: 15px;
+	background-color: goldenrod;
+	padding: 0 6px 0 6px;
+	color: var(--text-important);
 }
 
 /*--------------------------------------------------------------
