@@ -2498,6 +2498,25 @@ body.color-scheme-dark .used:hover {
 }
 
 /*--------------------------------------------------------------
+# Transport modal
+--------------------------------------------------------------*/
+
+#fetch-error:not(.active) {
+	display: none;
+}
+
+.fetch-error-banner.active {
+	position: absolute;
+	top: 0;
+	left: 13px;
+	font-size: x-small;
+	border-radius: 15px;
+	background-color: goldenrod;
+	padding: 0 6px 0 6px;
+	color: var(--text-important);
+}
+
+/*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
 
